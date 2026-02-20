@@ -1,0 +1,27 @@
+.about {
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.section-title {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    color: var(--color-primary-light);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.about-text {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: var(--spacing-lg);
+    }
+
+    .about-text {
+        font-size: var(--text-base);
+    }
+}
