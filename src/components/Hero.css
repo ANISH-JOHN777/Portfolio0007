@@ -103,11 +103,60 @@
         padding: var(--spacing-2xl) 0;
     }
 
+    .hero-title {
+        letter-spacing: 0.02em;
+    }
+
+    .hero-social {
+        gap: var(--spacing-md);
+    }
+
     .social-link span {
         display: none;
     }
 
     .social-link {
         padding: var(--spacing-sm);
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: var(--spacing-xl) 0;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .hero-contact {
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .contact-item {
+        font-size: var(--text-sm);
+    }
+
+    .contact-item svg {
+        min-width: 16px;
+    }
+
+    .hero-social {
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-link {
+        padding: 0.5rem;
     }
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Rocket, X } from 'lucide-react';
+import { Rocket, X, Github, ExternalLink } from 'lucide-react';
 import './Projects.css';
 
 const Projects = () => {
@@ -18,7 +18,9 @@ const Projects = () => {
                 'Automated content structuring (headings, paragraphs).',
                 'Client-side processing for speed and privacy.',
                 'One-click PDF export for easy sharing and archiving.'
-            ]
+            ],
+            github: 'https://github.com/ANISH-JOHN777/blogvox',
+            live: 'https://blogvox-demo.netlify.app'
         },
         {
             id: 'bikeRentals',
@@ -31,7 +33,9 @@ const Projects = () => {
                 'Intuitive interface for listing bikes with photos and descriptions.',
                 'Search and filtering system for finding available bikes.',
                 'A platform for direct user-to-user interaction and transaction.'
-            ]
+            ],
+            github: 'https://github.com/ANISH-JOHN777/bike-rentals',
+            live: 'https://bike-rentals-demo.netlify.app'
         },
         {
             id: 'billingPage',
@@ -44,7 +48,9 @@ const Projects = () => {
                 'Simple customer information management.',
                 'Print-friendly bill formatting.',
                 'Generate and download invoices as PDF files.'
-            ]
+            ],
+            github: 'https://github.com/ANISH-JOHN777/billing-page',
+            live: 'https://billing-page-demo.netlify.app'
         },
         {
             id: 'typingGame',
@@ -57,7 +63,9 @@ const Projects = () => {
                 'Real-time input validation and scoring.',
                 'Speed and accuracy tracking (WPM).',
                 'Increasing difficulty to challenge players.'
-            ]
+            ],
+            github: 'https://github.com/ANISH-JOHN777/typing-game',
+            live: 'https://typing-game-demo.netlify.app'
         },
         {
             id: 'newWay',
@@ -70,7 +78,9 @@ const Projects = () => {
                 'AI-powered resume analysis and enhancement suggestions.',
                 'Automated generation of interview questions tailored to the candidate.',
                 'A collaborative space for a more modern interview experience.'
-            ]
+            ],
+            github: 'https://github.com/ANISH-JOHN777/new-way',
+            live: 'https://new-way-demo.netlify.app'
         }
     ];
 
@@ -86,7 +96,7 @@ const Projects = () => {
 
     return (
         <>
-            <section className="projects scroll-reveal">
+            <section className="projects scroll-reveal" aria-label="Projects portfolio">
                 <h2 className="section-title text-glow">STELLAR PROJECTS</h2>
                 <div className="projects-grid">
                     {projects.map((project, index) => (
@@ -95,14 +105,15 @@ const Projects = () => {
                             className="project-card card"
                             onClick={() => openModal(project)}
                             style={{ animationDelay: `${index * 0.1}s` }}
+                            aria-label={`Open details for ${project.title} project`}
                         >
                             <div className="project-header">
-                                <Rocket className="project-icon icon-glow" size={24} />
+                                <Rocket className="project-icon icon-glow" size={24} aria-hidden="true" />
                                 <h3 className="project-title">{project.title}</h3>
                             </div>
                             {project.date && <p className="project-date">{project.date}</p>}
                             <p className="project-description">{project.description}</p>
-                            <div className="project-tech">
+                            <div className="project-tech" aria-label="Technologies used">
                                 {project.technologies.map((tech, techIndex) => (
                                     <span key={techIndex} className="tech-tag">
                                         {tech}
@@ -116,15 +127,15 @@ const Projects = () => {
 
             {/* Modal */}
             {selectedProject && (
-                <div className="modal-overlay" onClick={closeModal}>
+                <div className="modal-overlay" onClick={closeModal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
                     <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={closeModal}>
-                            <X size={24} />
+                        <button className="modal-close" onClick={closeModal} aria-label="Close project details modal">
+                            <X size={24} aria-hidden="true" />
                         </button>
 
                         <div className="modal-header">
-                            <Rocket className="icon-glow" size={32} />
-                            <h2 className="modal-title text-glow">{selectedProject.title}</h2>
+                            <Rocket className="icon-glow" size={32} aria-hidden="true" />
+                            <h2 className="modal-title text-glow" id="modal-title">{selectedProject.title}</h2>
                         </div>
 
                         <p className="modal-description">{selectedProject.fullDescription}</p>
@@ -144,6 +155,33 @@ const Projects = () => {
                                     {tech}
                                 </span>
                             ))}
+                        </div>
+
+                        <div className="modal-actions">
+                            {selectedProject.github && (
+                                <a 
+                                    href={selectedProject.github} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="action-btn github-btn"
+                                    aria-label={`View ${selectedProject.title} on GitHub - opens in new window`}
+                                >
+                                    <Github size={20} aria-hidden="true" />
+                                    GitHub
+                                </a>
+                            )}
+                            {selectedProject.live && (
+                                <a 
+                                    href={selectedProject.live} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="action-btn live-btn"
+                                    aria-label={`View ${selectedProject.title} live demo - opens in new window`}
+                                >
+                                    <ExternalLink size={20} aria-hidden="true" />
+                                    Live Demo
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>

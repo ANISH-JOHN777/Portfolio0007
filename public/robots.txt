@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+
+# Allow all bots to crawl
+Sitemap: https://anishjohn.dev/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

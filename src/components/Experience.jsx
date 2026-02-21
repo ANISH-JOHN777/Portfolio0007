@@ -4,8 +4,8 @@ const Experience = () => {
     const experiences = [
         {
             title: 'Product Manager',
-            company: 'Almost genius labs',
-            period: '',
+            company: 'Almost Genius Labs',
+            period: '6 months',
             responsibilities: [
                 'Developed and maintained web applications to enhance user experience and functionality.',
                 'Collaborated with teams to gather requirements and translate them into technical specifications.',
@@ -14,11 +14,13 @@ const Experience = () => {
         },
         {
             title: 'Web Developer Intern',
-            company: 'RETECH solution',
-            period: 'May 2025',
+            company: '21 RETECH Solution',
+            period: 'May 2025 - Present',
             responsibilities: [
-                'Developed web applications over a period of 21 days, utilizing HTML, CSS, and JavaScript.',
-                'Engaged in projects focused on artificial intelligence for 30 days.'
+                'Developed web applications utilizing HTML, CSS, and JavaScript.',
+                'Engaged with cutting-edge technologies and frameworks for modern web development.',
+                'Collaborated with senior developers to implement best practices and optimize code quality.',
+                'Participated in code reviews and learned industry-standard development workflows.'
             ]
         }
     ];
