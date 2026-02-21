@@ -7,6 +7,8 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Achievements from './components/Achievements';
+import GitHubStats from './components/GitHubStats';
+import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Game from './components/Game/Game';
@@ -37,6 +39,8 @@ function App() {
           <Skills />
           <Experience />
           <Projects />
+          <GitHubStats />
+          <Blog />
 
           <div className="two-column-grid">
             <Education />

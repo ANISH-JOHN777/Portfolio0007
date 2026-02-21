@@ -142,7 +142,7 @@
   padding: var(--spacing-md) var(--spacing-2xl);
   font-size: 1.1rem;
   font-weight: 600;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: var(--radius-lg);
@@ -152,7 +152,7 @@
   letter-spacing: 1px;
   font-family: 'Orbitron', monospace;
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-}
+
 
 .play-btn:hover {
   transform: translateY(-2px);
