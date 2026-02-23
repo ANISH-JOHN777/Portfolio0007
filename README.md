@@ -2,6 +2,10 @@
 
 A modern, space-themed portfolio website built with React, featuring stunning animations, glassmorphism effects, and a premium design system.
 
+## 🌐 Live Demo
+
+**[Visit the Live Portfolio](https://portfolio0007-tau.vercel.app/)**
+
 ## 🚀 Features
 
 - **Animated Starfield Background**: Dynamic canvas animation with twinkling stars
