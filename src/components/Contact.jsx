@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Mail, Phone, Send, AlertCircle, CheckCircle } from 'lucide-react';
 import './Contact.css';
 
-const Contact = () => {
+const Contact = ({ id }) => {
     const [formState, setFormState] = useState({
         name: '',
         email: '',
@@ -62,7 +62,7 @@ const Contact = () => {
     };
 
     return (
-        <section className="contact glass-panel scroll-reveal">
+        <section id={id} className="contact glass-panel scroll-reveal">
             <h2 className="section-title text-glow">GET IN TOUCH</h2>
             
             <div className="contact-container">

@@ -1,5 +1,7 @@
 .github-stats {
     margin-bottom: var(--spacing-3xl);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
 }
 
 .github-container {
@@ -12,7 +14,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -73,17 +76,21 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-lg);
 }
 
 .stat-card {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-md);
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-md);
     background: rgba(56, 189, 248, 0.05);
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
     transition: all var(--transition-base);
+    text-align: center;
 }
 
 .stat-card:hover {
@@ -100,6 +107,9 @@
 .stat-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
 .stat-number {
@@ -116,7 +126,8 @@
 }
 
 .languages-section {
-    padding-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    margin-top: 0;
     border-top: 1px solid var(--border-color);
 }
 
@@ -128,8 +139,9 @@
 
 .languages-list {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .language-tag {

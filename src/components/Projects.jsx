@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Rocket, X, Github, ExternalLink } from 'lucide-react';
 import './Projects.css';
 
-const Projects = () => {
+const Projects = ({ id }) => {
     const [selectedProject, setSelectedProject] = useState(null);
     const [selectedTech, setSelectedTech] = useState('All');
 
@@ -105,7 +105,7 @@ const Projects = () => {
 
     return (
         <>
-            <section className="projects scroll-reveal" aria-label="Projects portfolio">
+            <section id={id} className="projects scroll-reveal" aria-label="Projects portfolio">
                 <h2 className="section-title text-glow">STELLAR PROJECTS</h2>
 
                 {/* Filter Buttons */}

@@ -2,6 +2,7 @@
     text-align: center;
     padding: var(--spacing-3xl) 0;
     margin-bottom: var(--spacing-3xl);
+    padding-top: calc(var(--spacing-3xl) + 70px);
 }
 
 .hero-content {
@@ -126,6 +127,7 @@
     .hero {
         padding: var(--spacing-xl) 0;
         margin-bottom: var(--spacing-xl);
+        padding-top: calc(var(--spacing-xl) + 60px);
     }
 
     .hero-title {

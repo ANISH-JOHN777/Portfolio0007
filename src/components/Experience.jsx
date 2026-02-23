@@ -1,6 +1,6 @@
 import './Experience.css';
 
-const Experience = () => {
+const Experience = ({ id }) => {
     const experiences = [
         {
             title: 'Product Manager',
@@ -26,7 +26,7 @@ const Experience = () => {
     ];
 
     return (
-        <section className="experience glass-panel scroll-reveal">
+        <section id={id} className="experience glass-panel scroll-reveal">
             <h2 className="section-title text-glow">PROFESSIONAL VOYAGES</h2>
             <div className="timeline">
                 {experiences.map((exp, index) => (

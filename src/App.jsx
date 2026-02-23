@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Starfield from './components/Starfield';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -27,27 +28,29 @@ function App() {
     <div className="app">
       {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
       
+      <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
+      
       <ThemeToggle theme={theme} onToggle={toggleTheme} />
       
       <Starfield />
 
       <div className="container">
-        <Hero />
+        <Hero id="hero" />
 
         <main className="main-content">
-          <About />
-          <Skills />
-          <Experience />
-          <Projects />
-          <GitHubStats />
-          <Blog />
+          <About id="about" />
+          <Skills id="skills" />
+          <Experience id="experience" />
+          <Projects id="projects" />
+          <GitHubStats id="github" />
+          <Blog id="blog" />
 
           <div className="two-column-grid">
             <Education />
             <Achievements />
           </div>
 
-          <Contact />
+          <Contact id="contact" />
         </main>
 
         <Footer onPlayGame={() => setIsGameOpen(true)} />

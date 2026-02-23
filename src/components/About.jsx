@@ -1,8 +1,8 @@
 import './About.css';
 
-const About = () => {
+const About = ({ id }) => {
     return (
-        <section className="about glass-panel scroll-reveal">
+        <section id={id} className="about glass-panel scroll-reveal">
             <h2 className="section-title text-glow">MISSION OBJECTIVE</h2>
             <p className="about-text">
                 A passionate Web Developer with hands-on experience building dynamic and user-friendly

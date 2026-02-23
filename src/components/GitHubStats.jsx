@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Github, Star, GitFork, Eye } from 'lucide-react';
 import './GitHubStats.css';
 
-const GitHubStats = () => {
+const GitHubStats = ({ id }) => {
     const [stats, setStats] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -82,7 +82,7 @@ const GitHubStats = () => {
     }
 
     return (
-        <section className="github-stats glass-panel scroll-reveal">
+        <section id={id} className="github-stats glass-panel scroll-reveal">
             <h2 className="section-title text-glow">GITHUB ACTIVITY</h2>
 
             <div className="github-container">

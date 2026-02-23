@@ -8,7 +8,7 @@ const Achievements = () => {
         },
         {
             title: 'Publications',
-            description: 'IJARESM Publication'
+            description: 'IJARESM Publication, IEEE Publication'
         },
         {
             title: 'Extracurricular Missions',

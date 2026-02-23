@@ -1,7 +1,7 @@
 import { Mail, Phone, Linkedin, Github, Code2, Download } from 'lucide-react';
 import './Hero.css';
 
-const Hero = () => {
+const Hero = ({ id }) => {
     const handleDownloadResume = () => {
         // Create a simple resume and trigger download
         const resumeData = `
@@ -73,6 +73,7 @@ ACHIEVEMENTS:
 - Web Development Certifications
 - Full Stack Web Development Certification
 - IJARESM Publication
+- IEEE Publication
 - State level in Hockey
 - District level in Football
 
@@ -90,7 +91,7 @@ Generated from Portfolio: ${new Date().toLocaleDateString()}
     };
 
     return (
-        <header className="hero scroll-reveal" role="banner" aria-label="Hero section with introduction and contact">
+        <header id={id} className="hero scroll-reveal" role="banner" aria-label="Hero section with introduction and contact">
             <div className="hero-content">
                 <h1 className="hero-title text-glow">M ANISH JOHN</h1>
                 <p className="hero-subtitle">Web Developer & Digital Explorer</p>

@@ -1,6 +1,6 @@
 import './Skills.css';
 
-const Skills = () => {
+const Skills = ({ id }) => {
     const skillCategories = [
         {
             title: 'Navigation & Propulsion',
@@ -25,7 +25,7 @@ const Skills = () => {
     ];
 
     return (
-        <section className="skills glass-panel scroll-reveal">
+        <section id={id} className="skills glass-panel scroll-reveal">
             <h2 className="section-title text-glow">TECH CONSTELLATION</h2>
             <div className="skills-grid">
                 {skillCategories.map((category, index) => (

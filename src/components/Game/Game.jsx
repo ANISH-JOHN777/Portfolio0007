@@ -327,20 +327,33 @@ const Game = ({ onClose }) => {
   }, [cannonAngle]);
 
   const drawCannon = (ctx, x, y, angle) => {
-    // Cannon base
+    // Cannon base - make it larger and more visible
     ctx.fillStyle = '#a78bfa';
+    ctx.shadowColor = 'rgba(167, 139, 250, 0.8)';
+    ctx.shadowBlur = 20;
     ctx.beginPath();
-    ctx.arc(x, y, 20, 0, Math.PI * 2);
+    ctx.arc(x, y, 25, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Inner circle for depth
+    ctx.fillStyle = '#c4b5fd';
+    ctx.beginPath();
+    ctx.arc(x, y, 15, 0, Math.PI * 2);
     ctx.fill();
 
-    // Cannon barrel
+    // Cannon barrel - thicker and more visible with glow
     ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 8;
+    ctx.lineWidth = 10;
     ctx.lineCap = 'round';
+    ctx.shadowColor = 'rgba(56, 189, 248, 0.8)';
+    ctx.shadowBlur = 15;
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(x + Math.cos(angle) * 40, y + Math.sin(angle) * 40);
+    const barrelLength = 50;
+    ctx.lineTo(x + Math.cos(angle) * barrelLength, y + Math.sin(angle) * barrelLength);
     ctx.stroke();
+    ctx.shadowBlur = 0;
   };
 
   const drawBird = (ctx, bird) => {
@@ -386,22 +399,33 @@ const Game = ({ onClose }) => {
   };
 
   const drawBullet = (ctx, bullet) => {
+    if (!Number.isFinite(bullet.x) || !Number.isFinite(bullet.y)) return;
+    
     ctx.save();
     
-    // Glow effect
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+    // Glow effect - larger and more visible
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.5)';
+    ctx.shadowColor = 'rgba(56, 189, 248, 0.8)';
+    ctx.shadowBlur = 20;
     ctx.beginPath();
-    ctx.arc(bullet.x, bullet.y, bullet.radius * 2, 0, Math.PI * 2);
+    ctx.arc(bullet.x, bullet.y, bullet.radius * 3, 0, Math.PI * 2);
     ctx.fill();
 
-    // Bullet
+    // Bullet - increased size
     ctx.fillStyle = '#38bdf8';
     ctx.shadowColor = '#38bdf8';
     ctx.shadowBlur = 15;
     ctx.beginPath();
-    ctx.arc(bullet.x, bullet.y, bullet.radius, 0, Math.PI * 2);
+    ctx.arc(bullet.x, bullet.y, bullet.radius + 2, 0, Math.PI * 2);
     ctx.fill();
 
+    // Bright core
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowBlur = 0;
+    ctx.beginPath();
+    ctx.arc(bullet.x, bullet.y, bullet.radius / 2, 0, Math.PI * 2);
+    ctx.fill();
+    
     ctx.restore();
   };
 
