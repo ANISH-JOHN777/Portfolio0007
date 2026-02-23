@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ScoreBoard from './ScoreBoard';
+import useTheme from '../../hooks/useTheme';
 import './TypingGame.css';
 
 const TypingGame = ({ onClose }) => {
+  const { theme } = useTheme();
   const [gameState, setGameState] = useState('start'); // start, playing, gameOver
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
@@ -71,16 +73,26 @@ const TypingGame = ({ onClose }) => {
     const width = canvasRef.current.width;
     const height = canvasRef.current.height;
     
-    // Clear with gradient
+    // Clear with gradient - theme aware
     const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, '#1a1a2e');
-    gradient.addColorStop(0.5, '#16213e');
-    gradient.addColorStop(1, '#0f3460');
+    if (theme === 'light') {
+      gradient.addColorStop(0, '#f8f9fa');
+      gradient.addColorStop(0.5, '#f0f3f6');
+      gradient.addColorStop(1, '#e8ecf1');
+    } else {
+      gradient.addColorStop(0, '#1a1a2e');
+      gradient.addColorStop(0.5, '#16213e');
+      gradient.addColorStop(1, '#0f3460');
+    }
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
     // Draw decorative circles in background
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.05)';
+    if (theme === 'light') {
+      ctx.fillStyle = 'rgba(2, 132, 199, 0.08)';
+    } else {
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.05)';
+    }
     for (let i = 0; i < 3; i++) {
       const x = ((Date.now() / 100 + i * 300) % (width + 200)) - 100;
       ctx.beginPath();
@@ -98,12 +110,23 @@ const TypingGame = ({ onClose }) => {
       word.width = metrics.width;
       
       // Determine color - highlight if it matches current typing
-      let textColor = '#a78bfa'; // Purple default
-      let glowColor = 'rgba(167, 139, 250, 0.8)';
-      
-      if (inputValue.length > 0 && word.text.startsWith(inputValue)) {
-        textColor = '#4ade80'; // Green if partially correct
-        glowColor = 'rgba(74, 222, 128, 0.8)';
+      let textColor, glowColor;
+      if (theme === 'light') {
+        textColor = '#7c3aed'; // Purple default
+        glowColor = 'rgba(124, 58, 237, 0.8)';
+        
+        if (inputValue.length > 0 && word.text.startsWith(inputValue)) {
+          textColor = '#059669'; // Green if partially correct
+          glowColor = 'rgba(5, 150, 105, 0.8)';
+        }
+      } else {
+        textColor = '#a78bfa'; // Purple default
+        glowColor = 'rgba(167, 139, 250, 0.8)';
+        
+        if (inputValue.length > 0 && word.text.startsWith(inputValue)) {
+          textColor = '#4ade80'; // Green if partially correct
+          glowColor = 'rgba(74, 222, 128, 0.8)';
+        }
       }
       
       // Draw glow
@@ -114,7 +137,7 @@ const TypingGame = ({ onClose }) => {
       
       // Draw outline for better readability
       ctx.shadowColor = 'transparent';
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.strokeStyle = theme === 'light' ? 'rgba(31, 41, 55, 0.3)' : 'rgba(255, 255, 255, 0.3)';
       ctx.lineWidth = 2;
       ctx.strokeText(word.text, word.x, word.y);
     });
@@ -122,10 +145,10 @@ const TypingGame = ({ onClose }) => {
     // Draw input hint
     ctx.font = 'bold 16px Inter, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.fillStyle = theme === 'light' ? 'rgba(31, 41, 55, 0.6)' : 'rgba(255, 255, 255, 0.6)';
     ctx.shadowColor = 'transparent';
     ctx.fillText('Type the words to catch them!', width / 2, 50);
-  }, [inputValue]);
+  }, [inputValue, theme]);
 
   // Update game
   const updateGame = useCallback(() => {
@@ -288,7 +311,7 @@ const TypingGame = ({ onClose }) => {
   };
 
   return (
-    <div className="game-container">
+    <div className={`game-container ${theme === 'light' ? 'light-theme' : ''}`}>
       <div className="game-header">
         <button className="close-btn" onClick={onClose}>×</button>
         <h2>Type Rush</h2>

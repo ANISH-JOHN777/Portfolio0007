@@ -28,33 +28,35 @@ function App() {
     <div className="app">
       {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
       
-      <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
-      
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
-      
-      <Starfield />
+      {!isGameOpen && (
+        <>
+          <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          <Starfield />
 
-      <div className="container">
-        <Hero id="hero" />
+          <div className="container">
+            <Hero id="hero" />
 
-        <main className="main-content">
-          <About id="about" />
-          <Skills id="skills" />
-          <Experience id="experience" />
-          <Projects id="projects" />
-          <GitHubStats id="github" />
-          <Blog id="blog" />
+            <main className="main-content">
+              <About id="about" />
+              <Skills id="skills" />
+              <Experience id="experience" />
+              <Projects id="projects" />
+              <GitHubStats id="github" />
+              <Blog id="blog" />
 
-          <div className="two-column-grid">
-            <Education />
-            <Achievements />
+              <div className="two-column-grid">
+                <Education />
+                <Achievements />
+              </div>
+
+              <Contact id="contact" />
+            </main>
+
+            <Footer onPlayGame={() => setIsGameOpen(true)} />
           </div>
-
-          <Contact id="contact" />
-        </main>
-
-        <Footer onPlayGame={() => setIsGameOpen(true)} />
-      </div>
+        </>
+      )}
     </div>
   );
 }
