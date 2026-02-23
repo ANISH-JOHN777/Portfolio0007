@@ -323,10 +323,10 @@ const TypingGame = ({ onClose }) => {
             <h1>Type Rush</h1>
             <p>Catch falling words by typing them!</p>
             <div className="instructions">
-              <p>• Words fall from the top</p>
-              <p>• Type each word to catch it</p>
-              <p>• You have 3 lives</p>
-              <p>• Complete levels to unlock harder challenges</p>
+              <p>
+                Words fall from the top and you have 3 lives. Type each word to catch it before it reaches the bottom. 
+                Complete levels to unlock harder challenges and increase your score!
+              </p>
             </div>
             <button className="play-btn" onClick={startGame}>Play</button>
           </div>

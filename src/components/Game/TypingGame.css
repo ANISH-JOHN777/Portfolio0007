@@ -375,32 +375,23 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
-  text-align: left;
+  text-align: center;
   background: rgba(56, 189, 248, 0.1);
   padding: var(--spacing-xl) var(--spacing-2xl);
   border-radius: var(--radius-lg);
   border: 2px solid rgba(56, 189, 248, 0.4);
   max-width: 500px;
   box-shadow: 0 8px 32px rgba(56, 189, 248, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  align-items: center;
+  justify-content: center;
 }
 
 .instructions p {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--color-text-secondary);
   line-height: 1.8;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-weight: 500;
-}
-
-.instructions p::before {
-  content: '?';
-  color: var(--color-primary);
-  font-size: 1.3rem;
-  font-weight: bold;
-  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.6));
 }
 
 .play-btn {
