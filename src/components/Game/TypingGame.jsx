@@ -315,6 +315,19 @@ const TypingGame = ({ onClose }) => {
       <div className="game-header">
         <button className="close-btn" onClick={onClose}>×</button>
         <h2>Type Rush</h2>
+        {gameState === 'playing' && (
+          <div className="header-stats">
+            <div className="stat-item score-stat">
+              <ScoreBoard score={score} />
+            </div>
+            <div className="stat-item">
+              <span>❤️ {lives}</span>
+            </div>
+            <div className="stat-item">
+              <span>⭐ Level {levelRef.current}</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {gameState === 'start' && (
@@ -351,18 +364,8 @@ const TypingGame = ({ onClose }) => {
       />
 
       {gameState === 'playing' && (
-        <div className="game-hud">
-          <div className="score-info">
-            <ScoreBoard score={score} />
-            <div className="lives-display">
-              <span>❤️ {lives}</span>
-            </div>
-            <div className="level-display">
-              <span>⭐ Level {levelRef.current}</span>
-            </div>
-          </div>
-          
-          <div className="input-container">
+        <div className="taskbar">
+          <div className="taskbar-content">
             <input
               ref={inputRef}
               type="text"
@@ -375,7 +378,7 @@ const TypingGame = ({ onClose }) => {
               spellCheck="false"
             />
             <div className="input-hint">
-              {catchAnimation && currentWord && <span className="word-caught">✓ Caught: {currentWord}</span>}
+              {catchAnimation && currentWord && <span className="word-caught">✓ {currentWord}</span>}
             </div>
           </div>
         </div>

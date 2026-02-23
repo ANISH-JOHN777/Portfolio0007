@@ -16,26 +16,54 @@
 .game-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: var(--spacing-lg);
-  background: linear-gradient(135deg, rgba(14, 19, 48, 0.9) 0%, rgba(56, 189, 248, 0.1) 100%);
-  border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(14, 19, 48, 0.9) 0%, rgba(56, 189, 248, 0.05) 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
   position: relative;
-  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.08);
 }
 
 .game-header h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--color-primary-light), #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  color: var(--color-primary);
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
   margin: 0;
   font-family: 'Orbitron', monospace;
   animation: glowPulse 3s ease-in-out infinite;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+.header-stats {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.stat-item {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 0.5px;
+}
+
+.stat-item span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.score-stat {
+  background: rgba(56, 189, 248, 0.1);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 8px;
+  border-left: 2px solid var(--color-primary);
 }
 
 @keyframes glowPulse {
@@ -48,16 +76,16 @@
 }
 
 .close-btn {
-  position: absolute;
-  left: var(--spacing-lg);
+  position: static;
+  margin-right: auto;
   background: rgba(56, 189, 248, 0.1);
   border: 2px solid var(--color-primary);
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--color-primary);
   cursor: pointer;
   padding: 0;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,25 +115,7 @@
 }
 
 .game-hud {
-  position: absolute;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  z-index: 10;
-  animation: slideInRight 0.6s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  display: none;
 }
 
 .score-info {
@@ -206,21 +216,57 @@
   }
 }
 
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  background: linear-gradient(135deg, rgba(14, 19, 48, 0.95) 0%, rgba(56, 189, 248, 0.08) 100%);
+  border-top: 2px solid rgba(56, 189, 248, 0.3);
+  padding: var(--spacing-lg);
+  z-index: 50;
+  box-shadow: 0 -4px 20px rgba(56, 189, 248, 0.15);
+  animation: slideUpFromBottom 0.6s ease-out;
+}
+
+@keyframes slideUpFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.taskbar-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+}
+
 .typing-input {
   width: 100%;
-  padding: var(--spacing-lg) var(--spacing-2xl);
-  font-size: 1.4rem;
+  max-width: 500px;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.2rem;
   font-family: 'Courier New', monospace;
   background: linear-gradient(135deg, rgba(14, 19, 48, 0.9) 0%, rgba(56, 189, 248, 0.05) 100%);
-  border: 3px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   border-radius: var(--radius-lg);
   color: var(--color-primary-light);
   text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
   transition: all 0.3s ease;
   outline: none;
   text-align: center;
-  letter-spacing: 2px;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2), inset 0 0 10px rgba(56, 189, 248, 0.05);
+  letter-spacing: 1px;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2), inset 0 0 10px rgba(56, 189, 248, 0.05);
   font-weight: 600;
 }
 
@@ -447,9 +493,29 @@
 }
 
 @media (max-width: 768px) {
-  .game-hud {
-    top: var(--spacing-md);
-    right: var(--spacing-md);
+  .game-header {
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .game-header h2 {
+    font-size: 1.4rem;
+    flex: 1 0 100%;
+    text-align: center;
+  }
+
+  .header-stats {
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+
+  .taskbar {
+    padding: var(--spacing-md);
+  }
+
+  .typing-input {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
   }
 
   .score-info {
@@ -466,11 +532,6 @@
     max-width: calc(100% - var(--spacing-lg));
     width: 95%;
     bottom: 20px;
-  }
-
-  .typing-input {
-    padding: var(--spacing-lg) var(--spacing-lg);
-    font-size: 1.2rem;
   }
 
   .start-content h1,
@@ -561,14 +622,18 @@
 }
 
 .game-container.light-theme .game-header {
-  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.08) 100%);
-  border-bottom: 2px solid rgba(2, 132, 199, 0.3);
-  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.12);
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.04) 100%);
+  border-bottom: 1px solid rgba(2, 132, 199, 0.2);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.08);
 }
 
 .game-container.light-theme .game-header h2 {
-  background: linear-gradient(135deg, #0284c7, #06b6d4);
-  text-shadow: 0 0 20px rgba(2, 132, 199, 0.2);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  color: #0284c7;
+  text-shadow: 0 0 15px rgba(2, 132, 199, 0.2);
 }
 
 .game-container.light-theme .close-btn {
@@ -650,4 +715,24 @@
 
 .game-container.light-theme .input-hint {
   color: #1f2937;
+}
+
+.game-container.light-theme .game-header {
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.04) 100%);
+  border-bottom: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.game-container.light-theme .header-stats .stat-item {
+  color: #1f2937;
+}
+
+.game-container.light-theme .score-stat {
+  background: rgba(2, 132, 199, 0.1);
+  border-left-color: #0284c7;
+}
+
+.game-container.light-theme .taskbar {
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.05) 100%);
+  border-top: 2px solid rgba(2, 132, 199, 0.2);
+  box-shadow: 0 -4px 15px rgba(2, 132, 199, 0.1);
 }
