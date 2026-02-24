@@ -144,11 +144,11 @@ const TypingGame = ({ onClose }) => {
     });
 
     // Draw input hint
-    ctx.font = 'bold 16px Inter, sans-serif';
+    ctx.font = 'bold 12px Inter, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillStyle = theme === 'light' ? 'rgba(31, 41, 55, 0.6)' : 'rgba(255, 255, 255, 0.6)';
     ctx.shadowColor = 'transparent';
-    ctx.fillText('Type the words to catch them!', width / 2, 50);
+    ctx.fillText('Type the words to catch them!', width / 2, 30);
   }, [inputValue, theme]);
 
   // Update game
@@ -324,7 +324,7 @@ const TypingGame = ({ onClose }) => {
     <div className={`game-container ${theme === 'light' ? 'light-theme' : ''}`}>
       <div className="game-header">
         <button className="close-btn" onClick={onClose}>
-          <X size={20} />
+          <X size={16} />
         </button>
         <h2>Type Rush</h2>
         {gameState === 'playing' && (
@@ -333,10 +333,10 @@ const TypingGame = ({ onClose }) => {
               <ScoreBoard score={score} />
             </div>
             <div className="stat-item">
-              <span><Heart size={18} fill="currentColor" /> {lives}</span>
+              <span><Heart size={14} fill="currentColor" /> {lives}</span>
             </div>
             <div className="stat-item">
-              <span><Star size={18} fill="currentColor" /> Level {levelRef.current}</span>
+              <span><Star size={14} fill="currentColor" /> Level {levelRef.current}</span>
             </div>
           </div>
         )}
@@ -393,7 +393,7 @@ const TypingGame = ({ onClose }) => {
             <div className="input-hint">
               {catchAnimation && currentWord && (
                 <span className="word-caught">
-                  <CheckCircle size={20} /> {currentWord}
+                  <CheckCircle size={16} /> {currentWord}
                 </span>
               )}
             </div>
