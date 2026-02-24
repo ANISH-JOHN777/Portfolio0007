@@ -53,9 +53,9 @@ const TypingGame = ({ onClose }) => {
     const fallingWord = {
       id: gameDataRef.current.nextWordId++,
       text: word,
-      x: Math.random() * (canvasWidth - 100) + 50,
+      x: Math.random() * (canvasWidth - 200) + 100,
       y: -50,
-      vx: (Math.random() - 0.5) * 1, // Slight horizontal drift
+      vx: (Math.random() - 0.5) * 0.5, // Reduced horizontal drift
       vy: 1 + gameDataRef.current.level * 0.2, // Speed increases with level (reduced)
       fontSize: 24,
       width: 0, // Will be calculated during draw
@@ -185,11 +185,13 @@ const TypingGame = ({ onClose }) => {
           return newLives;
         });
       }
-      // Keep words in horizontal bounds (wrap around)
-      else if (word.x < -100) {
-        word.x = canvasWidth + 100;
-      } else if (word.x > canvasWidth + 100) {
-        word.x = -100;
+      // Keep words in horizontal bounds (bounce back instead of wrap)
+      if (word.x < 50) {
+        word.x = 50;
+        word.vx = Math.abs(word.vx); // Bounce right
+      } else if (word.x > canvasWidth - 50) {
+        word.x = canvasWidth - 50;
+        word.vx = -Math.abs(word.vx); // Bounce left
       }
     }
 

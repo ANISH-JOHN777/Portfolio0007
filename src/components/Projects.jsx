@@ -4,7 +4,6 @@ import './Projects.css';
 
 const Projects = ({ id }) => {
     const [selectedProject, setSelectedProject] = useState(null);
-    const [selectedTech, setSelectedTech] = useState('All');
 
     const projects = [
         {
@@ -85,14 +84,6 @@ const Projects = ({ id }) => {
         }
     ];
 
-    // Get unique technologies
-    const allTechs = ['All', ...new Set(projects.flatMap(p => p.technologies))];
-
-    // Filter projects
-    const filteredProjects = selectedTech === 'All' 
-        ? projects 
-        : projects.filter(p => p.technologies.includes(selectedTech));
-
     const openModal = (project) => {
         setSelectedProject(project);
         document.body.style.overflow = 'hidden';
@@ -108,22 +99,8 @@ const Projects = ({ id }) => {
             <section id={id} className="projects scroll-reveal" aria-label="Projects portfolio">
                 <h2 className="section-title text-glow">STELLAR PROJECTS</h2>
 
-                {/* Filter Buttons */}
-                <div className="project-filters">
-                    {allTechs.map((tech) => (
-                        <button
-                            key={tech}
-                            className={`filter-btn ${selectedTech === tech ? 'active' : ''}`}
-                            onClick={() => setSelectedTech(tech)}
-                            aria-pressed={selectedTech === tech}
-                        >
-                            {tech}
-                        </button>
-                    ))}
-                </div>
-
                 <div className="projects-grid stagger-children">
-                    {filteredProjects.map((project, index) => (
+                    {projects.map((project, index) => (
                         <button
                             key={project.id}
                             className="project-card card"
