@@ -17,9 +17,9 @@ const Achievements = () => {
     ];
 
     return (
-        <section className="achievements glass-panel scroll-reveal">
+        <section className="achievements glass-panel scroll-reveal-right">
             <h2 className="section-title text-glow">GALACTIC CREDENTIALS</h2>
-            <div className="achievements-list">
+            <div className="achievements-list stagger-children">
                 {achievements.map((achievement, index) => (
                     <div key={index} className="achievement-item">
                         <h3 className="achievement-title">{achievement.title}</h3>

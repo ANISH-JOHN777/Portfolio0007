@@ -27,7 +27,7 @@ const Skills = ({ id }) => {
     return (
         <section id={id} className="skills glass-panel scroll-reveal">
             <h2 className="section-title text-glow">TECH CONSTELLATION</h2>
-            <div className="skills-grid">
+            <div className="skills-grid stagger-children">
                 {skillCategories.map((category, index) => (
                     <div key={index} className="skill-category">
                         <h3 className="category-title">{category.title}</h3>

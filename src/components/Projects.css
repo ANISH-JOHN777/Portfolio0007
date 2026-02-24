@@ -34,7 +34,7 @@
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: white;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    box-shadow: var(--glow-primary);
 }
 
 .projects-grid {
@@ -121,7 +121,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--color-bg-primary);
+    opacity: 0.95;
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
@@ -268,7 +269,7 @@
 
 .live-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 0 15px rgba(167, 139, 250, 0.2);
+    box-shadow: var(--glow-primary), var(--glow-accent);
 }
 
 /* Scrollbar for modal */
@@ -277,7 +278,7 @@
 }
 
 .modal-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--color-bg-tertiary);
     border-radius: var(--radius-sm);
 }
 

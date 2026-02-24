@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Starfield from './components/Starfield';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Metrics from './components/Metrics';
 import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
@@ -14,6 +15,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Game from './components/Game/Game';
 import ThemeToggle from './components/ThemeToggle';
+import TourGuide from './components/TourGuide';
 import useScrollReveal from './hooks/useScrollReveal';
 import useTheme from './hooks/useTheme';
 import './App.css';
@@ -45,6 +47,7 @@ function App() {
 
       <div className="container">
         <Hero id="hero" />
+        <Metrics id="metrics" />
 
         <main className="main-content">
           <About id="about" />
@@ -66,6 +69,7 @@ function App() {
       </div>
 
       {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
+      <TourGuide />
     </div>
   );
 }

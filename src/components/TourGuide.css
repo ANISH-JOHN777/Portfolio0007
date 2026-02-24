@@ -1,0 +1,344 @@
+.tour-guide {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 9999;
+    display: flex;
+    gap: var(--spacing-md);
+    animation: slideInUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tour-guide.minimized {
+    flex-direction: column;
+    align-items: center;
+}
+
+.tour-guide-robot {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+    animation: bounce 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.robot-icon {
+    color: white;
+    animation: float 3s ease-in-out infinite;
+}
+
+.robot-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    animation: robotPulse 2s ease-out infinite;
+}
+
+@keyframes robotPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tour-guide-content {
+    background: var(--color-bg-secondary);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    max-width: 380px;
+    box-shadow: var(--shadow-xl), var(--glow-primary);
+    animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tour-guide-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.tour-guide-title {
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tour-guide-close {
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+}
+
+.tour-guide-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-heading);
+}
+
+.tour-guide-message {
+    color: var(--color-text-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-lg);
+}
+
+.tour-guide-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.tour-guide-progress {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+.tour-guide-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.tour-guide-skip,
+.tour-guide-next {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.tour-guide-skip {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-secondary);
+}
+
+.tour-guide-skip:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--color-text-heading);
+    transform: translateY(-2px);
+}
+
+.tour-guide-next {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    color: white;
+    box-shadow: var(--shadow-md), var(--glow-primary);
+}
+
+.tour-guide-next:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+.tour-guide-dots {
+    display: flex;
+    gap: var(--spacing-xs);
+    justify-content: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-base);
+}
+
+.dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--color-primary);
+}
+
+.dot.completed {
+    background: var(--color-primary);
+    opacity: 0.5;
+}
+
+.tour-guide-minimize {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    border: 2px solid var(--color-bg-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md), var(--glow-primary);
+}
+
+.tour-guide-minimize:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+.tour-guide-trigger {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+    transition: all var(--transition-base);
+    z-index: 9999;
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tour-guide-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl), var(--glow-primary);
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .tour-guide {
+        flex-direction: column;
+        align-items: flex-end;
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+
+    .tour-guide-robot {
+        width: 60px;
+        height: 60px;
+    }
+
+    .robot-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .tour-guide-content {
+        max-width: calc(100vw - 2 * var(--spacing-md));
+        padding: var(--spacing-md);
+    }
+
+    .tour-guide-title {
+        font-size: var(--text-base);
+    }
+
+    .tour-guide-message {
+        font-size: var(--text-sm);
+    }
+
+    .tour-guide-trigger {
+        width: 56px;
+        height: 56px;
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .tour-guide {
+        bottom: var(--spacing-sm);
+        right: var(--spacing-sm);
+    }
+
+    .tour-guide-content {
+        max-width: calc(100vw - 2 * var(--spacing-sm));
+    }
+
+    .tour-guide-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tour-guide-skip,
+    .tour-guide-next {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -134,7 +134,7 @@ Performance optimization is an ongoing process that requires continuous monitori
             <h2 className="section-title text-glow">BLOG & INSIGHTS</h2>
 
             <div className="blog-container">
-                <div className="blog-grid">
+                <div className="blog-grid stagger-children">
                     {blogPosts.map((post) => (
                         <article
                             key={post.id}

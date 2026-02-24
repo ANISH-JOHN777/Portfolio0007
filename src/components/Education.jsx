@@ -17,9 +17,9 @@ const Education = () => {
     ];
 
     return (
-        <section className="education glass-panel scroll-reveal">
+        <section className="education glass-panel scroll-reveal-left">
             <h2 className="section-title text-glow">LAUNCHPAD</h2>
-            <div className="education-list">
+            <div className="education-list stagger-children">
                 {education.map((edu, index) => (
                     <div key={index} className="education-item">
                         <h3 className="degree">{edu.degree}</h3>

@@ -122,7 +122,7 @@ const Projects = ({ id }) => {
                     ))}
                 </div>
 
-                <div className="projects-grid">
+                <div className="projects-grid stagger-children">
                     {filteredProjects.map((project, index) => (
                         <button
                             key={project.id}

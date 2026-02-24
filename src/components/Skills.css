@@ -11,13 +11,13 @@
 
 .skill-category {
     padding: var(--spacing-md);
-    background: rgba(20, 25, 60, 0.3);
+    background: var(--color-surface-glass);
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
 }
 
 .skill-category:hover {
-    background: rgba(20, 25, 60, 0.5);
+    background: var(--color-surface-hover);
     transform: translateY(-3px);
 }
 

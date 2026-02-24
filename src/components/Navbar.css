@@ -4,18 +4,13 @@
     left: 0;
     right: 0;
     width: 100%;
-    background: #0a0a1a;
+    background: var(--color-bg-primary);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 999;
-    border-bottom: 3px solid #ff0000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid var(--color-primary);
+    box-shadow: var(--shadow-md);
     min-height: 70px;
-}
-
-:root.light-theme .navbar {
-    background: rgba(248, 249, 250, 0.95);
-    border-bottom-color: rgba(2, 132, 199, 0.1);
 }
 
 .navbar-container {
@@ -38,7 +33,7 @@
 .brand-logo {
     font-size: var(--text-lg);
     font-weight: 800;
-    color: #38bdf8;
+    color: var(--color-primary);
     text-decoration: none;
     font-family: var(--font-heading);
     letter-spacing: 1px;
@@ -48,7 +43,7 @@
 
 .brand-logo:hover {
     color: var(--color-accent);
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    text-shadow: var(--glow-primary);
 }
 
 /* Desktop Menu */
@@ -62,7 +57,7 @@
 
 .nav-link {
     position: relative;
-    color: #d1d5db;
+    color: var(--color-text-secondary);
     text-decoration: none;
     font-weight: 600;
     font-size: var(--text-sm);
@@ -73,12 +68,12 @@
 }
 
 .nav-link:hover {
-    color: #38bdf8;
+    color: var(--color-primary);
 }
 
 .nav-link.active {
-    color: #38bdf8;
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    color: var(--color-primary);
+    text-shadow: var(--glow-text);
 }
 
 .nav-link::after {
@@ -114,7 +109,7 @@
 
 .nav-game-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    box-shadow: var(--glow-primary);
 }
 
 /* Mobile Menu Button */
@@ -137,7 +132,7 @@
 }
 
 .navbar-toggle:hover {
-    background: rgba(56, 189, 248, 0.1);
+    background: var(--color-border);
 }
 
 .navbar-toggle svg {
@@ -153,10 +148,10 @@
     top: 70px;
     left: 0;
     right: 0;
-    background: rgba(10, 10, 26, 0.98);
+    background: var(--color-bg-secondary);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    border-bottom: 1px solid var(--color-border);
     flex-direction: column;
     padding: var(--spacing-lg);
     gap: var(--spacing-md);
@@ -185,7 +180,7 @@
     letter-spacing: 0.5px;
     transition: all var(--transition-base);
     padding: var(--spacing-sm) 0;
-    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .mobile-nav-link:hover,
@@ -212,7 +207,7 @@
 
 .mobile-nav-game-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    box-shadow: var(--glow-primary);
 }
 
 @keyframes slideDown {
