@@ -1,8 +1,14 @@
 /* ===================================
    DESIGN SYSTEM & GLOBAL STYLES
-   =================================== */
+   ===================================
+   
+   FONT HISTORY (for easy revert):
+   Current: Poppins (heading) + Lato (body)
+   Original: Orbitron (heading) + Inter (body)
+   
+=================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;500;700&display=swap');
 
 /* CSS Variables */
 :root {
@@ -66,8 +72,8 @@
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
   
   /* Typography */
-  --font-heading: 'Orbitron', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Lato', sans-serif;
   
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -483,6 +489,87 @@ a:hover {
     --text-6xl: 2.5rem;
     --text-5xl: 2rem;
     --text-4xl: 1.75rem;
+  }
+
+  /* Mobile Touch Optimization */
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  body,
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Better text rendering on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Mobile-friendly scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize animations for mobile */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    /* Reduce spacing on very small screens */
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 2.5rem;
+    --spacing-3xl: 3rem;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent pinch zoom */
+  input[type="button"],
+  input[type="submit"],
+  button {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Disable double-tap zoom (but keep pinch zoom) */
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-touch-callout: none;
   }
 }
 

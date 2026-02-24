@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { X, Heart, Star, CheckCircle } from 'lucide-react';
 import ScoreBoard from './ScoreBoard';
 import useTheme from '../../hooks/useTheme';
 import './TypingGame.css';
@@ -259,6 +260,13 @@ const TypingGame = ({ onClose }) => {
     }
   };
 
+  // Ensure input stays focused
+  const handleInputBlur = () => {
+    if (gameState === 'playing') {
+      inputRef.current?.focus();
+    }
+  };
+
   // Resize canvas
   useEffect(() => {
     const resizeCanvas = () => {
@@ -313,7 +321,9 @@ const TypingGame = ({ onClose }) => {
   return (
     <div className={`game-container ${theme === 'light' ? 'light-theme' : ''}`}>
       <div className="game-header">
-        <button className="close-btn" onClick={onClose}>×</button>
+        <button className="close-btn" onClick={onClose}>
+          <X size={20} />
+        </button>
         <h2>Type Rush</h2>
         {gameState === 'playing' && (
           <div className="header-stats">
@@ -321,10 +331,10 @@ const TypingGame = ({ onClose }) => {
               <ScoreBoard score={score} />
             </div>
             <div className="stat-item">
-              <span>❤️ {lives}</span>
+              <span><Heart size={18} fill="currentColor" /> {lives}</span>
             </div>
             <div className="stat-item">
-              <span>⭐ Level {levelRef.current}</span>
+              <span><Star size={18} fill="currentColor" /> Level {levelRef.current}</span>
             </div>
           </div>
         )}
@@ -371,6 +381,7 @@ const TypingGame = ({ onClose }) => {
               type="text"
               value={inputValue}
               onChange={handleInputChange}
+              onBlur={handleInputBlur}
               placeholder="Type words here..."
               className="typing-input"
               autoFocus
@@ -378,7 +389,11 @@ const TypingGame = ({ onClose }) => {
               spellCheck="false"
             />
             <div className="input-hint">
-              {catchAnimation && currentWord && <span className="word-caught">✓ {currentWord}</span>}
+              {catchAnimation && currentWord && (
+                <span className="word-caught">
+                  <CheckCircle size={20} /> {currentWord}
+                </span>
+              )}
             </div>
           </div>
         </div>

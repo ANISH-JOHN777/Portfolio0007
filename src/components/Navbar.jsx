@@ -5,6 +5,7 @@ import './Navbar.css';
 const Navbar = ({ onPlayGame, theme }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     const navItems = [
         { id: 'home', label: 'Home', href: '#hero' },
@@ -21,6 +22,18 @@ const Navbar = ({ onPlayGame, theme }) => {
     const textColor = isDark ? '#d1d5db' : '#4b5563';
     const activeColor = '#0284c7';
     const logoColor = isDark ? '#38bdf8' : '#0284c7';
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+            if (window.innerWidth >= 768) {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,71 +69,91 @@ const Navbar = ({ onPlayGame, theme }) => {
     };
 
     return (
-        <nav style={{ 
-            position: 'fixed', 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            width: '100%', 
-            height: '70px', 
-            background: bgColor,
-            borderBottom: '2px solid #38bdf8',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            paddingLeft: '20px',
-            paddingRight: '20px',
-            boxSizing: 'border-box',
-            boxShadow: isDark ? '0 2px 8px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
-            transition: 'all 0.3s ease'
-        }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <div style={{ color: logoColor, fontSize: '20px', fontWeight: 'bold', cursor: 'pointer' }} onClick={() => handleNavClick('#hero')}>
-                    M ANISH JOHN
-                </div>
-
-                {/* Desktop Menu */}
-                <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                    {navItems.map((item) => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handleNavClick(item.href);
-                            }}
-                            style={{ 
-                                color: activeSection === item.id ? activeColor : textColor,
-                                textDecoration: 'none',
-                                fontSize: '14px',
-                                fontWeight: '600',
-                                cursor: 'pointer',
-                                transition: 'color 0.3s'
-                            }}
+        <>
+            <nav className="navbar" style={{ 
+                background: bgColor,
+                borderBottom: '2px solid #38bdf8',
+            }}>
+                <div className="navbar-container">
+                    <div className="navbar-brand">
+                        <div 
+                            className="brand-logo"
+                            style={{ color: logoColor }}
+                            onClick={() => handleNavClick('#hero')}
                         >
-                            {item.label}
-                        </a>
-                    ))}
-                    <button 
-                        onClick={onPlayGame}
-                        style={{
-                            background: '#38bdf8',
-                            color: '#fff',
-                            border: 'none',
-                            padding: '8px 16px',
-                            borderRadius: '6px',
-                            fontWeight: '600',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                        }}
+                            M ANISH JOHN
+                        </div>
+                    </div>
+
+                    {/* Desktop Menu */}
+                    <div className="navbar-menu">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.id}
+                                href={item.href}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavClick(item.href);
+                                }}
+                                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
+                                style={{ 
+                                    color: activeSection === item.id ? activeColor : textColor,
+                                }}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                        <button 
+                            onClick={onPlayGame}
+                            className="nav-game-btn"
+                        >
+                            ▶ Play
+                        </button>
+                    </div>
+
+                    {/* Mobile Hamburger Button */}
+                    <button
+                        className="navbar-toggle"
+                        onClick={() => setIsOpen(!isOpen)}
+                        style={{ display: isMobile ? 'flex' : 'none' }}
                     >
-                        ▶ Play
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
-            </div>
-        </nav>
+
+                {/* Mobile Menu */}
+                {isMobile && isOpen && (
+                    <div className="navbar-mobile active">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.id}
+                                href={item.href}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavClick(item.href);
+                                }}
+                                className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
+                                style={{ 
+                                    color: activeSection === item.id ? activeColor : textColor,
+                                }}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                        <button 
+                            onClick={() => {
+                                onPlayGame();
+                                setIsOpen(false);
+                            }}
+                            className="mobile-nav-game-btn"
+                        >
+                            <Gamepad2 size={18} />
+                            Play Game
+                        </button>
+                    </div>
+                )}
+            </nav>
+        </>
     );
 };
 

@@ -148,6 +148,23 @@
         font-size: var(--text-sm);
     }
 
+    .social-link {
+        padding: var(--spacing-sm);
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+    }
+
+    .social-link span {
+        display: none;
+    }
+
+    .social-link svg {
+        min-width: 20px;
+        min-height: 20px;
+    }
+}
+
     .contact-item svg {
         min-width: 16px;
     }

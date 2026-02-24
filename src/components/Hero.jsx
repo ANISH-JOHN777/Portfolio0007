@@ -1,93 +1,253 @@
 import { Mail, Phone, Linkedin, Github, Code2, Download } from 'lucide-react';
+import jsPDF from 'jspdf';
 import './Hero.css';
 
 const Hero = ({ id }) => {
     const handleDownloadResume = () => {
-        // Create a simple resume and trigger download
-        const resumeData = `
-M ANISH JOHN
-Web Developer & Digital Explorer
-=====================================
+        // Create PDF using jsPDF
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4'
+        });
 
-CONTACT INFORMATION:
-Email: anishjohn0007@gmail.com
-Phone: +91 8072937674
-LinkedIn: https://www.linkedin.com/in/m-anish-raj/
-GitHub: https://github.com/ANISH-JOHN777/
-LeetCode: https://leetcode.com/u/anishjohnm/
+        // Define colors
+        const primaryColor = [3, 132, 199]; // Cyan blue
+        const textColor = [31, 41, 55]; // Dark gray
+        const lightColor = [107, 114, 128]; // Light gray
 
-PROFESSIONAL SUMMARY:
-A passionate Web Developer with hands-on experience building dynamic and user-friendly
-websites using HTML, CSS, JavaScript, and React. Adept at problem-solving and UI design,
-with a proven track record of creating real-world applications like bike rentals and
-billing systems. Eager to innovate and tackle new tech challenges with a creative mindset.
+        let yPosition = 20;
 
-EDUCATION:
-B-Tech in Information Technology
-SNS College of Engineering (2023-2027)
-CGPA: 8.51
+        // Header - Name
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(24);
+        pdf.setTextColor(...primaryColor);
+        pdf.text('M ANISH JOHN', 105, yPosition, { align: 'center' });
 
-12th Standard
-Hope School (2023)
-Percentage: 76%
+        // Subtitle
+        yPosition += 10;
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(11);
+        pdf.setTextColor(...lightColor);
+        pdf.text('Web Developer & Digital Explorer', 105, yPosition, { align: 'center' });
 
-TECHNICAL SKILLS:
-Navigation & Propulsion: HTML, CSS, JavaScript, Web Design, WordPress
-Core Systems: Python, React, GitHub
-Design Blueprints: Design Thinking, Canva
-Automated Systems: n8n Automation
-Crew Competencies: Problem-Solving
+        // Divider line
+        yPosition += 8;
+        pdf.setDrawColor(...primaryColor);
+        pdf.line(20, yPosition, 190, yPosition);
 
-PROFESSIONAL EXPERIENCE:
-Product Manager - Almost Genius Labs
-- Developed and maintained web applications to enhance user experience and functionality
-- Collaborated with teams to gather requirements and translate them into technical specifications
-- Managed project timelines and deliverables, ensuring on-time completion
+        // Contact Information
+        yPosition += 10;
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(...lightColor);
+        
+        const contactInfo = [
+            'Email: anishjohn0007@gmail.com | Phone: +91 8072937674',
+            'GitHub: github.com/ANISH-JOHN777 | LinkedIn: linkedin.com/in/m-anish-raj'
+        ];
+        
+        contactInfo.forEach(info => {
+            pdf.text(info, 105, yPosition, { align: 'center' });
+            yPosition += 5;
+        });
 
-Web Developer Intern - RETECH Solution (May 2025)
-- Developed web applications utilizing HTML, CSS, and JavaScript within 21 days
-- Engaged in projects focused on artificial intelligence
+        // Section function
+        const addSection = (title, content) => {
+            yPosition += 8;
+            
+            // Section title
+            pdf.setFont('Helvetica', 'bold');
+            pdf.setFontSize(11);
+            pdf.setTextColor(...primaryColor);
+            pdf.text(title, 20, yPosition);
+            
+            // Section underline
+            const titleWidth = pdf.getTextWidth(title);
+            pdf.setDrawColor(...primaryColor);
+            pdf.line(20, yPosition + 2, 20 + titleWidth, yPosition + 2);
+            
+            yPosition += 8;
+            
+            // Content
+            pdf.setFont('Helvetica', 'normal');
+            pdf.setFontSize(10);
+            pdf.setTextColor(...textColor);
+            
+            const lines = pdf.splitTextToSize(content, 170);
+            lines.forEach(line => {
+                if (yPosition > 270) {
+                    pdf.addPage();
+                    yPosition = 20;
+                }
+                pdf.text(line, 25, yPosition);
+                yPosition += 6;
+            });
+        };
 
-PROJECTS:
-1. Blogvox - Voice-to-text blog generation with PDF export (Sep 2025)
-   GitHub: https://github.com/ANISH-JOHN777/blogvox
-   Live: https://blogvox-demo.netlify.app
+        // Professional Summary
+        const summary = `Passionate Web Developer with hands-on experience building dynamic and user-friendly websites using HTML, CSS, JavaScript, and React. Adept at problem-solving and UI design, with a proven track record of creating real-world applications. Eager to innovate and tackle new technology challenges with a creative mindset.`;
+        addSection('PROFESSIONAL SUMMARY', summary);
 
-2. Bike Rentals - Peer-to-peer bike rental platform
-   GitHub: https://github.com/ANISH-JOHN777/bike-rentals
-   Live: https://bike-rentals-demo.netlify.app
+        // Education
+        yPosition += 4;
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(11);
+        pdf.setTextColor(...primaryColor);
+        pdf.text('EDUCATION', 20, yPosition);
+        
+        const titleWidth = pdf.getTextWidth('EDUCATION');
+        pdf.setDrawColor(...primaryColor);
+        pdf.line(20, yPosition + 2, 20 + titleWidth, yPosition + 2);
+        
+        yPosition += 8;
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(10);
+        pdf.setTextColor(...textColor);
+        pdf.text('B-Tech in Information Technology', 25, yPosition);
+        yPosition += 5;
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(...lightColor);
+        pdf.text('SNS College of Engineering (2023-2027) | CGPA: 8.51', 25, yPosition);
 
-3. Billing Page - POS solution for invoice generation
-   GitHub: https://github.com/ANISH-JOHN777/billing-page
-   Live: https://billing-page-demo.netlify.app
+        // Technical Skills
+        yPosition += 10;
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(11);
+        pdf.setTextColor(...primaryColor);
+        pdf.text('TECHNICAL SKILLS', 20, yPosition);
+        
+        const skillsTitle = pdf.getTextWidth('TECHNICAL SKILLS');
+        pdf.setDrawColor(...primaryColor);
+        pdf.line(20, yPosition + 2, 20 + skillsTitle, yPosition + 2);
+        
+        yPosition += 8;
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(...textColor);
+        
+        const skills = `Frontend: HTML5, CSS3, JavaScript ES6+, React, Responsive Design
+Backend: Python, Node.js | Databases: MongoDB | Tools: Git/GitHub, VS Code, Figma
+Other: Web Design, Problem-Solving, UI/UX Design, n8n Automation`;
+        
+        const skillLines = pdf.splitTextToSize(skills, 165);
+        skillLines.forEach(line => {
+            if (yPosition > 270) {
+                pdf.addPage();
+                yPosition = 20;
+            }
+            pdf.text(line, 25, yPosition);
+            yPosition += 5;
+        });
 
-4. Typing Game - Browser game to improve typing speed
-   GitHub: https://github.com/ANISH-JOHN777/typing-game
-   Live: https://typing-game-demo.netlify.app
+        // Professional Experience
+        yPosition += 4;
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(11);
+        pdf.setTextColor(...primaryColor);
+        pdf.text('PROFESSIONAL EXPERIENCE', 20, yPosition);
+        
+        const expTitle = pdf.getTextWidth('PROFESSIONAL EXPERIENCE');
+        pdf.setDrawColor(...primaryColor);
+        pdf.line(20, yPosition + 2, 20 + expTitle, yPosition + 2);
+        
+        yPosition += 8;
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(10);
+        pdf.setTextColor(...textColor);
+        pdf.text('Product Manager - Almost Genius Labs', 25, yPosition);
+        yPosition += 5;
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(...lightColor);
+        pdf.text('Developed and maintained web applications | Collaborated with teams on requirements | Managed project timelines', 25, yPosition);
 
-5. New Way - AI-powered interview platform
-   GitHub: https://github.com/ANISH-JOHN777/new-way
-   Live: https://new-way-demo.netlify.app
+        // Projects
+        yPosition += 10;
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(11);
+        pdf.setTextColor(...primaryColor);
+        pdf.text('KEY PROJECTS', 20, yPosition);
+        
+        const projTitle = pdf.getTextWidth('KEY PROJECTS');
+        pdf.setDrawColor(...primaryColor);
+        pdf.line(20, yPosition + 2, 20 + projTitle, yPosition + 2);
+        
+        yPosition += 8;
+        
+        const projects = [
+            { name: 'Blogvox', desc: 'Voice-to-text blog generation with PDF export | React, JavaScript' },
+            { name: 'Bike Rentals', desc: 'Peer-to-peer bike rental platform | Full-stack application' },
+            { name: 'Billing Page', desc: 'POS solution for invoice generation | React, PDF Export' },
+            { name: 'Typing Game', desc: 'Interactive browser game for typing speed improvement | Canvas API' },
+            { name: 'New Way', desc: 'AI-powered interview platform with video calls | Real-time features' }
+        ];
+        
+        projects.forEach(project => {
+            if (yPosition > 270) {
+                pdf.addPage();
+                yPosition = 20;
+            }
+            pdf.setFont('Helvetica', 'bold');
+            pdf.setFontSize(9);
+            pdf.setTextColor(...textColor);
+            pdf.text(`• ${project.name}`, 25, yPosition);
+            yPosition += 4;
+            pdf.setFont('Helvetica', 'normal');
+            pdf.setFontSize(8);
+            pdf.setTextColor(...lightColor);
+            pdf.text(project.desc, 30, yPosition);
+            yPosition += 5;
+        });
 
-ACHIEVEMENTS:
-- Web Development Certifications
-- Full Stack Web Development Certification
-- IJARESM Publication
-- IEEE Publication
-- State level in Hockey
-- District level in Football
+        // Achievements
+        yPosition += 4;
+        if (yPosition > 270) {
+            pdf.addPage();
+            yPosition = 20;
+        }
+        
+        pdf.setFont('Helvetica', 'bold');
+        pdf.setFontSize(11);
+        pdf.setTextColor(...primaryColor);
+        pdf.text('ACHIEVEMENTS', 20, yPosition);
+        
+        const achTitle = pdf.getTextWidth('ACHIEVEMENTS');
+        pdf.setDrawColor(...primaryColor);
+        pdf.line(20, yPosition + 2, 20 + achTitle, yPosition + 2);
+        
+        yPosition += 8;
+        pdf.setFont('Helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(...textColor);
+        
+        const achievements = [
+            '• Web Development Certifications & Full Stack Web Development Certification',
+            '• IJARESM & IEEE Publications',
+            '• State level achievements in Hockey | District level in Football'
+        ];
+        
+        achievements.forEach(ach => {
+            if (yPosition > 270) {
+                pdf.addPage();
+                yPosition = 20;
+            }
+            pdf.text(ach, 25, yPosition);
+            yPosition += 5;
+        });
 
-Generated from Portfolio: ${new Date().toLocaleDateString()}
-        `;
+        // Footer
+        pdf.setFontSize(8);
+        pdf.setTextColor(...lightColor);
+        const pageCount = pdf.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+            pdf.setPage(i);
+            pdf.text(`Page ${i} of ${pageCount}`, 105, 285, { align: 'center' });
+        }
 
-        // Create blob and download
-        const element = document.createElement('a');
-        const file = new Blob([resumeData], { type: 'text/plain' });
-        element.href = URL.createObjectURL(file);
-        element.download = 'M_Anish_John_Resume.txt';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+        // Download PDF
+        pdf.save('M_Anish_John_Resume.pdf');
     };
 
     return (

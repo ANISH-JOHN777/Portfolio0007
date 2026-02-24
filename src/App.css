@@ -9,10 +9,13 @@
   padding: 0 var(--spacing-md);
   position: relative;
   z-index: 1;
+  padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+  padding-right: max(var(--spacing-md), env(safe-area-inset-right));
 }
 
 .main-content {
   padding: var(--spacing-2xl) 0;
+  padding-bottom: max(var(--spacing-2xl), env(safe-area-inset-bottom));
 }
 
 .two-column-grid {

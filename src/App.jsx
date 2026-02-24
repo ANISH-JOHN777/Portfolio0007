@@ -24,39 +24,48 @@ function App() {
   
   useScrollReveal();
 
+  // Prevent body scroll when game is open
+  useEffect(() => {
+    if (isGameOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isGameOpen]);
+
   return (
     <div className="app">
-      {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
-      
-      {!isGameOpen && (
-        <>
-          <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-          <Starfield />
+      <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
+      <Starfield />
 
-          <div className="container">
-            <Hero id="hero" />
+      <div className="container">
+        <Hero id="hero" />
 
-            <main className="main-content">
-              <About id="about" />
-              <Skills id="skills" />
-              <Experience id="experience" />
-              <Projects id="projects" />
-              <GitHubStats id="github" />
-              <Blog id="blog" />
+        <main className="main-content">
+          <About id="about" />
+          <Skills id="skills" />
+          <Experience id="experience" />
+          <Projects id="projects" />
+          <GitHubStats id="github" />
+          <Blog id="blog" />
 
-              <div className="two-column-grid">
-                <Education />
-                <Achievements />
-              </div>
-
-              <Contact id="contact" />
-            </main>
-
-            <Footer onPlayGame={() => setIsGameOpen(true)} />
+          <div className="two-column-grid">
+            <Education />
+            <Achievements />
           </div>
-        </>
-      )}
+
+          <Contact id="contact" />
+        </main>
+
+        <Footer onPlayGame={() => setIsGameOpen(true)} />
+      </div>
+
+      {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
     </div>
   );
 }
