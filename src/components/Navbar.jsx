@@ -20,8 +20,8 @@ const Navbar = ({ onPlayGame, theme }) => {
     const isDark = theme === 'dark';
     const bgColor = isDark ? '#111111' : '#f8f9fa';
     const textColor = isDark ? '#d1d5db' : '#4b5563';
-    const activeColor = '#0284c7';
-    const logoColor = isDark ? '#38bdf8' : '#0284c7';
+    const activeColor = '#8b5cf6';
+    const logoColor = isDark ? '#a78bfa' : '#7c3aed';
 
     useEffect(() => {
         const handleResize = () => {
@@ -72,7 +72,7 @@ const Navbar = ({ onPlayGame, theme }) => {
         <>
             <nav className="navbar" style={{ 
                 background: bgColor,
-                borderBottom: '2px solid #38bdf8',
+                borderBottom: '2px solid #8b5cf6',
             }}>
                 <div className="navbar-container">
                     <div className="navbar-brand">

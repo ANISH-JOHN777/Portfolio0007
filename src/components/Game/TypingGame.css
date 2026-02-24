@@ -723,20 +723,20 @@
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   background-clip: unset;
-  color: #0284c7;
-  text-shadow: 0 0 15px rgba(2, 132, 199, 0.2);
+  color: #8b5cf6;
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
 }
 
 .game-container.light-theme .close-btn {
-  background: rgba(2, 132, 199, 0.1);
-  border-color: #0284c7;
-  color: #0284c7;
+  background: rgba(139, 92, 246, 0.1);
+  border-color: #8b5cf6;
+  color: #8b5cf6;
 }
 
 .game-container.light-theme .close-btn:hover {
-  background: #0284c7;
+  background: #8b5cf6;
   color: white;
-  box-shadow: 0 0 20px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
 }
 
 .game-container.light-theme .game-canvas {
@@ -744,9 +744,9 @@
 }
 
 .game-container.light-theme .score-info {
-  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.08) 100%);
-  border: 2px solid rgba(2, 132, 199, 0.4);
-  box-shadow: 0 10px 40px rgba(2, 132, 199, 0.15), inset 0 1px 0 rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .game-container.light-theme .lives-display {
@@ -791,7 +791,7 @@
 
 .game-container.light-theme .typing-input {
   background: rgba(248, 249, 250, 0.9);
-  border: 2px solid rgba(2, 132, 199, 0.4);
+  border: 2px solid rgba(139, 92, 246, 0.4);
   color: #1f2937;
 }
 
@@ -800,8 +800,8 @@
 }
 
 .game-container.light-theme .typing-input:focus {
-  border-color: #0284c7;
-  box-shadow: 0 0 20px rgba(2, 132, 199, 0.3);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
 .game-container.light-theme .input-hint {
@@ -809,8 +809,8 @@
 }
 
 .game-container.light-theme .game-header {
-  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.04) 100%);
-  border-bottom: 1px solid rgba(2, 132, 199, 0.2);
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(139, 92, 246, 0.04) 100%);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .game-container.light-theme .header-stats .stat-item {
@@ -818,12 +818,12 @@
 }
 
 .game-container.light-theme .score-stat {
-  background: rgba(2, 132, 199, 0.1);
-  border-left-color: #0284c7;
+  background: rgba(139, 92, 246, 0.1);
+  border-left-color: #8b5cf6;
 }
 
 .game-container.light-theme .taskbar {
-  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(2, 132, 199, 0.05) 100%);
-  border-top: 2px solid rgba(2, 132, 199, 0.2);
-  box-shadow: 0 -4px 15px rgba(2, 132, 199, 0.1);
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border-top: 2px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 -4px 15px rgba(139, 92, 246, 0.1);
 }

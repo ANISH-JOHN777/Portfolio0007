@@ -12,7 +12,7 @@ const Hero = ({ id }) => {
         });
 
         // Define colors
-        const primaryColor = [3, 132, 199]; // Cyan blue
+        const primaryColor = [139, 92, 246]; // Violet
         const textColor = [31, 41, 55]; // Dark gray
         const lightColor = [107, 114, 128]; // Light gray
 
