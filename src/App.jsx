@@ -42,7 +42,6 @@ function App() {
   return (
     <div className="app">
       <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
       <Starfield />
 
       <div className="container">
@@ -70,6 +69,7 @@ function App() {
 
       {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
       <TourGuide />
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
     </div>
   );
 }
