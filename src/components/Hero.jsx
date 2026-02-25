@@ -253,7 +253,21 @@ Other: Web Design, Problem-Solving, UI/UX Design, n8n Automation`;
     return (
         <header id={id} className="hero scroll-reveal" role="banner" aria-label="Hero section with introduction and contact">
             <div className="hero-content">
-                <h1 className="hero-title text-glow">M ANISH JOHN</h1>
+                <h1 className="hero-title">
+                    <span className="name-char" style={{animationDelay: '0s'}}>M</span>
+                    <span className="name-char" style={{animationDelay: '0.08s'}}>.</span>
+                    <span className="name-char" style={{animationDelay: '0.15s'}}> </span>
+                    <span className="name-char" style={{animationDelay: '0.2s'}}>A</span>
+                    <span className="name-char" style={{animationDelay: '0.25s'}}>N</span>
+                    <span className="name-char" style={{animationDelay: '0.3s'}}>I</span>
+                    <span className="name-char" style={{animationDelay: '0.35s'}}>S</span>
+                    <span className="name-char" style={{animationDelay: '0.4s'}}>H</span>
+                    <span className="name-char" style={{animationDelay: '0.45s'}}> </span>
+                    <span className="name-char" style={{animationDelay: '0.55s'}}>J</span>
+                    <span className="name-char" style={{animationDelay: '0.6s'}}>O</span>
+                    <span className="name-char" style={{animationDelay: '0.65s'}}>H</span>
+                    <span className="name-char" style={{animationDelay: '0.7s'}}>N</span>
+                </h1>
                 <p className="hero-subtitle">Web Developer | Problem Solver | Creative Builder</p>
 
                 <div className="hero-contact" aria-label="Contact information">
