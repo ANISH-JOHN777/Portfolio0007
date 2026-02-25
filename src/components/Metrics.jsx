@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Code, GitBranch, Users, Linkedin, Award, Calendar } from 'lucide-react';
+import { Code, GitBranch, Linkedin, Award, Calendar } from 'lucide-react';
 import './Metrics.css';
 
 const Metrics = ({ id }) => {
     const [counts, setCounts] = useState({
         projects: 0,
         linesOfCode: 0,
-        githubStars: 0,
         linkedinConnections: 0,
         yearsExperience: 0,
         achievements: 0
@@ -15,7 +14,6 @@ const Metrics = ({ id }) => {
     const targetValues = {
         projects: 25,
         linesOfCode: 50000,
-        githubStars: 120,
         linkedinConnections: 500,
         yearsExperience: 2,
         achievements: 15
@@ -50,37 +48,31 @@ const Metrics = ({ id }) => {
 
     const metrics = [
         {
-            icon: <Code size={32} />,
+            icon: <Code size={36} />,
             value: counts.projects,
             label: 'Projects Completed',
             suffix: '+'
         },
         {
-            icon: <GitBranch size={32} />,
+            icon: <GitBranch size={36} />,
             value: counts.linesOfCode.toLocaleString(),
             label: 'Lines of Code',
             suffix: '+'
         },
         {
-            icon: <Users size={32} />,
-            value: counts.githubStars,
-            label: 'GitHub Stars',
-            suffix: '+'
-        },
-        {
-            icon: <Linkedin size={32} />,
+            icon: <Linkedin size={36} />,
             value: counts.linkedinConnections,
             label: 'LinkedIn Connections',
             suffix: '+'
         },
         {
-            icon: <Calendar size={32} />,
+            icon: <Calendar size={36} />,
             value: counts.yearsExperience,
             label: 'Years of Experience',
             suffix: '+'
         },
         {
-            icon: <Award size={32} />,
+            icon: <Award size={36} />,
             value: counts.achievements,
             label: 'Achievements',
             suffix: '+'
