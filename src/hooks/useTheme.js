@@ -2,18 +2,14 @@ import { useEffect, useState } from 'react';
 
 const useTheme = () => {
     const [theme, setTheme] = useState(() => {
-        if (typeof window === 'undefined') return 'dark';
+        if (typeof window === 'undefined') return 'light';
         
         // Check localStorage first
         const stored = localStorage.getItem('theme');
         if (stored) return stored;
         
-        // Check system preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            return 'light';
-        }
-        
-        return 'dark';
+        // Default to light theme for new users
+        return 'light';
     });
 
     useEffect(() => {
