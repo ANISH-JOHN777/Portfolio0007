@@ -321,7 +321,7 @@ const TypingGame = ({ onClose }) => {
   };
 
   return (
-    <div className={`game-container ${theme === 'light' ? 'light-theme' : ''}`}>
+    <div className={`game-container ${theme === 'dark' ? 'dark-theme' : ''}`}>
       <div className="game-header">
         <button className="close-btn" onClick={onClose}>
           <X size={18} />

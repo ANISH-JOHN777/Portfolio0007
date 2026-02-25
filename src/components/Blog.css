@@ -238,13 +238,13 @@
     font-size: var(--text-base);
 }
 
-/* Light theme modal overlay */
-:root.light-theme .blog-modal-overlay {
-    background: rgba(255, 255, 255, 0.85);
+/* Dark theme modal overlay */
+:root.dark-theme .blog-modal-overlay {
+    background: rgba(10, 10, 26, 0.9);
 }
 
-:root.light-theme .blog-modal {
-    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3), var(--glow-primary);
+:root.dark-theme .blog-modal {
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4), var(--glow-primary);
 }
 
 /* Scrollbar styling for modal */

@@ -206,7 +206,7 @@ const TourGuide = ({ isHidden }) => {
             )}
 
             {isVisible && (
-                <div className={`tour-guide ${isMinimized ? 'minimized' : ''} ${theme === 'light' ? 'light-theme' : ''}`}>
+                <div className={`tour-guide ${isMinimized ? 'minimized' : ''} ${theme === 'dark' ? 'dark-theme' : ''}`}>
                     <div className="tour-guide-robot">
                         <div className="robot-particles">
                             <Sparkles className="particle particle-1" size={12} />

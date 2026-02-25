@@ -943,72 +943,72 @@
     }
 }
 
-/* Light Theme Overrides */
-.tour-guide.light-theme .tour-guide-content {
+/* Dark Theme Overrides */
+.tour-guide.dark-theme .tour-guide-content {
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(243, 232, 255, 0.9) 50%,
-        rgba(255, 255, 255, 0.95) 100%);
-    border: 3px solid rgba(124, 58, 237, 0.3);
+        rgba(14, 19, 48, 0.95) 0%, 
+        rgba(46, 18, 80, 0.9) 50%,
+        rgba(14, 19, 48, 0.95) 100%);
+    border: 3px solid rgba(139, 92, 246, 0.4);
 }
 
-.tour-guide.light-theme .tour-guide-content::after {
+.tour-guide.dark-theme .tour-guide-content::after {
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(243, 232, 255, 0.9) 100%);
-    border-color: rgba(124, 58, 237, 0.3);
-}
-
-.tour-guide.light-theme .speech-bubble-tail {
-    border-color: transparent transparent transparent rgba(124, 58, 237, 0.3);
-}
-
-.tour-guide.light-theme .speech-bubble-tail::before {
-    border-color: transparent transparent transparent rgba(255, 255, 255, 0.95);
-}
-
-.tour-guide.light-theme .tour-guide-message {
-    color: #1f2937;
-}
-
-.tour-guide.light-theme .tour-guide-close:hover {
-    background: rgba(139, 92, 246, 0.15);
-}
-
-.tour-guide.light-theme .tour-guide-skip {
-    background: rgba(139, 92, 246, 0.2);
-    color: #6b21a8;
+        rgba(14, 19, 48, 0.95) 0%, 
+        rgba(46, 18, 80, 0.9) 100%);
     border-color: rgba(139, 92, 246, 0.4);
+}
+
+.tour-guide.dark-theme .speech-bubble-tail {
+    border-color: transparent transparent transparent rgba(139, 92, 246, 0.4);
+}
+
+.tour-guide.dark-theme .speech-bubble-tail::before {
+    border-color: transparent transparent transparent rgba(14, 19, 48, 0.95);
+}
+
+.tour-guide.dark-theme .tour-guide-message {
+    color: #f3f4f6;
+}
+
+.tour-guide.dark-theme .tour-guide-close:hover {
+    background: rgba(167, 139, 250, 0.2);
+}
+
+.tour-guide.dark-theme .tour-guide-skip {
+    background: rgba(139, 92, 246, 0.25);
+    color: #c4b5fd;
+    border-color: rgba(139, 92, 246, 0.5);
     font-weight: 700;
 }
 
-.tour-guide.light-theme .tour-guide-skip:hover {
-    background: rgba(139, 92, 246, 0.3);
-    color: #5b21b6;
+.tour-guide.dark-theme .tour-guide-skip:hover {
+    background: rgba(139, 92, 246, 0.35);
+    color: #d8b4fe;
 }
 
-.tour-guide.light-theme .message-icon-wrapper {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.1));
-    border-color: rgba(139, 92, 246, 0.2);
-}
-
-.tour-guide.light-theme .message-icon {
-    color: #7c3aed;
-}
-
-.tour-guide.light-theme .progress-text {
-    background: rgba(139, 92, 246, 0.15);
+.tour-guide.dark-theme .message-icon-wrapper {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.15));
     border-color: rgba(139, 92, 246, 0.3);
 }
 
-.tour-guide.light-theme .step-number {
-    color: #7c3aed;
-    text-shadow: 0 2px 10px rgba(124, 58, 237, 0.4);
+.tour-guide.dark-theme .message-icon {
+    color: #a78bfa;
 }
 
-.tour-guide.light-theme .step-separator,
-.tour-guide.light-theme .step-total {
-    color: #4b5563;
+.tour-guide.dark-theme .progress-text {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+.tour-guide.dark-theme .step-number {
+    color: #a78bfa;
+    text-shadow: 0 2px 10px rgba(167, 139, 250, 0.5);
+}
+
+.tour-guide.dark-theme .step-separator,
+.tour-guide.dark-theme .step-total {
+    color: #d1d5db;
 }
 
 /* Mobile Responsiveness */

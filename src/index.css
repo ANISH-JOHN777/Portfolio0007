@@ -28,27 +28,27 @@
 
 /* CSS Variables */
 :root {
-  /* Colors - White & Violet Theme (Dark Mode) */
-  --color-bg-primary: #1a0a2e;
-  --color-bg-secondary: #240a3e;
-  --color-bg-tertiary: #2e1250;
+  /* Colors - White & Violet Theme (Light Mode - DEFAULT) */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #faf5ff;
+  --color-bg-tertiary: #f3e8ff;
   
-  --color-surface-glass: rgba(139, 92, 246, 0.1);
-  --color-surface-hover: rgba(167, 139, 250, 0.15);
+  --color-surface-glass: rgba(243, 232, 255, 0.8);
+  --color-surface-hover: rgba(237, 233, 254, 0.9);
   
-  --color-primary: #8b5cf6;
-  --color-primary-light: #a78bfa;
-  --color-primary-dark: #7c3aed;
+  --color-primary: #7c3aed;
+  --color-primary-light: #8b5cf6;
+  --color-primary-dark: #6d28d9;
   
-  --color-accent: #c084fc;
-  --color-accent-light: #d8b4fe;
+  --color-accent: #a78bfa;
+  --color-accent-light: #c084fc;
   
-  --color-text-primary: #f3f4f6;
-  --color-text-secondary: #d1d5db;
-  --color-text-heading: #ffffff;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-heading: #111827;
   
-  --color-border: rgba(139, 92, 246, 0.3);
-  --color-border-hover: rgba(139, 92, 246, 0.5);
+  --color-border: rgba(124, 58, 237, 0.2);
+  --color-border-hover: rgba(124, 58, 237, 0.4);
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
@@ -56,15 +56,15 @@
   --gradient-sky: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
   --gradient-cosmic: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #c084fc 100%);
   
-  /* Shadows & Glows */
-  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.2);
-  --shadow-md: 0 4px 16px rgba(124, 58, 237, 0.3);
-  --shadow-lg: 0 8px 32px rgba(124, 58, 237, 0.4);
-  --shadow-xl: 0 16px 48px rgba(124, 58, 237, 0.5);
+  /* Shadows & Glows for Light Theme */
+  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.1);
+  --shadow-md: 0 4px 16px rgba(124, 58, 237, 0.15);
+  --shadow-lg: 0 8px 32px rgba(124, 58, 237, 0.2);
+  --shadow-xl: 0 16px 48px rgba(124, 58, 237, 0.25);
   
-  --glow-primary: 0 0 20px rgba(139, 92, 246, 0.6);
-  --glow-accent: 0 0 20px rgba(192, 132, 252, 0.6);
-  --glow-text: 0 0 8px rgba(139, 92, 246, 0.8);
+  --glow-primary: 0 0 15px rgba(124, 58, 237, 0.3);
+  --glow-accent: 0 0 15px rgba(167, 139, 250, 0.3);
+  --glow-text: 0 0 5px rgba(124, 58, 237, 0.5);
   
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -111,39 +111,39 @@
 }
 
 /* Light Theme */
-:root.light-theme {
-  /* Colors - White & Violet Theme (Light Mode) */
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #faf5ff;
-  --color-bg-tertiary: #f3e8ff;
+:root.dark-theme {
+  /* Colors - White & Violet Theme (Dark Mode) */
+  --color-bg-primary: #1a0a2e;
+  --color-bg-secondary: #240a3e;
+  --color-bg-tertiary: #2e1250;
   
-  --color-surface-glass: rgba(243, 232, 255, 0.8);
-  --color-surface-hover: rgba(237, 233, 254, 0.9);
+  --color-surface-glass: rgba(139, 92, 246, 0.1);
+  --color-surface-hover: rgba(167, 139, 250, 0.15);
   
-  --color-primary: #7c3aed;
-  --color-primary-light: #8b5cf6;
-  --color-primary-dark: #6d28d9;
+  --color-primary: #8b5cf6;
+  --color-primary-light: #a78bfa;
+  --color-primary-dark: #7c3aed;
   
-  --color-accent: #a78bfa;
-  --color-accent-light: #c084fc;
+  --color-accent: #c084fc;
+  --color-accent-light: #d8b4fe;
   
-  --color-text-primary: #1f2937;
-  --color-text-secondary: #6b7280;
-  --color-text-heading: #111827;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #d1d5db;
+  --color-text-heading: #ffffff;
   
-  --color-border: rgba(124, 58, 237, 0.2);
-  --color-border-hover: rgba(124, 58, 237, 0.4);
+  --color-border: rgba(139, 92, 246, 0.3);
+  --color-border-hover: rgba(139, 92, 246, 0.5);
   
-  /* Shadows for light theme */
-  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.1);
-  --shadow-md: 0 4px 16px rgba(124, 58, 237, 0.15);
-  --shadow-lg: 0 8px 32px rgba(124, 58, 237, 0.2);
-  --shadow-xl: 0 16px 48px rgba(124, 58, 237, 0.25);
+  /* Shadows for dark theme */
+  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.2);
+  --shadow-md: 0 4px 16px rgba(124, 58, 237, 0.3);
+  --shadow-lg: 0 8px 32px rgba(124, 58, 237, 0.4);
+  --shadow-xl: 0 16px 48px rgba(124, 58, 237, 0.5);
   
-  /* Glows for light theme */
-  --glow-primary: 0 0 15px rgba(124, 58, 237, 0.3);
-  --glow-accent: 0 0 15px rgba(167, 139, 250, 0.3);
-  --glow-text: 0 0 5px rgba(124, 58, 237, 0.5);
+  /* Glows for dark theme */
+  --glow-primary: 0 0 20px rgba(139, 92, 246, 0.6);
+  --glow-accent: 0 0 20px rgba(192, 132, 252, 0.6);
+  --glow-text: 0 0 8px rgba(139, 92, 246, 0.8);
 }
 
 /* Reset & Base Styles */

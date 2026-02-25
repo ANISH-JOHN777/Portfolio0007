@@ -51,14 +51,14 @@
   }
 }
 
-/* Light theme */
-.game-container.light-theme .score-label {
-  color: rgba(124, 58, 237, 0.7);
+/* Dark theme */
+.game-container.dark-theme .score-label {
+  color: rgba(167, 139, 250, 0.9);
 }
 
-.game-container.light-theme .score-value {
-  color: #7c3aed;
-  text-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+.game-container.dark-theme .score-value {
+  color: #c4b5fd;
+  text-shadow: 0 0 10px rgba(196, 181, 253, 0.5);
 }
 
 /* Responsive */
