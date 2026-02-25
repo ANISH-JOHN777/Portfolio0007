@@ -3,30 +3,30 @@ import './Skills.css';
 const Skills = ({ id }) => {
     const skillCategories = [
         {
-            title: 'Navigation & Propulsion',
-            skills: ['HTML', 'CSS', 'JavaScript', 'Front End Coding', 'Web Design', 'WordPress']
+            title: 'Web Development',
+            skills: ['HTML', 'CSS', 'JavaScript', 'React', 'WordPress', 'Responsive Design']
         },
         {
-            title: 'Core Systems',
-            skills: ['Python', 'React', 'GitHub']
+            title: 'Programming & Tools',
+            skills: ['Python', 'GitHub', 'Version Control']
         },
         {
-            title: 'Design Blueprints',
-            skills: ['Design Thinking', 'Canva']
+            title: 'Design & Creativity',
+            skills: ['UI/UX Design', 'Canva', 'Design Thinking']
         },
         {
-            title: 'Automated Systems',
-            skills: ['n8n Automation']
+            title: 'Automation & Workflow',
+            skills: ['n8n Automation', 'Process Optimization']
         },
         {
-            title: 'Crew Competencies',
-            skills: ['Problem-Solving']
+            title: 'Problem Solving',
+            skills: ['Debugging', 'Critical Thinking', 'User-Centered Solutions']
         }
     ];
 
     return (
         <section id={id} className="skills glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">TECH CONSTELLATION</h2>
+            <h2 className="section-title text-glow">What I Work With</h2>
             <div className="skills-grid stagger-children">
                 {skillCategories.map((category, index) => (
                     <div key={index} className="skill-category">

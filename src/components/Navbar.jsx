@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Gamepad2 } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = ({ onPlayGame, theme }) => {
+const Navbar = ({ onPlayGame, theme, isHidden }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -70,7 +70,7 @@ const Navbar = ({ onPlayGame, theme }) => {
 
     return (
         <>
-            <nav className="navbar" style={{ 
+            <nav className={`navbar ${isHidden ? 'hidden' : ''}`} style={{ 
                 background: bgColor,
                 borderBottom: '2px solid #8b5cf6',
             }}>

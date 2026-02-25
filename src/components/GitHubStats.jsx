@@ -66,7 +66,7 @@ const GitHubStats = ({ id }) => {
     if (loading) {
         return (
             <section className="github-stats glass-panel scroll-reveal">
-                <h2 className="section-title text-glow">GITHUB ACTIVITY</h2>
+                <h2 className="section-title text-glow">My GitHub Activity</h2>
                 <p className="loading-text">Loading stats...</p>
             </section>
         );
@@ -75,7 +75,7 @@ const GitHubStats = ({ id }) => {
     if (error) {
         return (
             <section className="github-stats glass-panel scroll-reveal">
-                <h2 className="section-title text-glow">GITHUB ACTIVITY</h2>
+                <h2 className="section-title text-glow">My GitHub Activity</h2>
                 <p className="error-text">{error}</p>
             </section>
         );
@@ -83,7 +83,7 @@ const GitHubStats = ({ id }) => {
 
     return (
         <section id={id} className="github-stats glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">GITHUB ACTIVITY</h2>
+            <h2 className="section-title text-glow">My GitHub Activity</h2>
 
             <div className="github-container">
                 <div className="github-header">

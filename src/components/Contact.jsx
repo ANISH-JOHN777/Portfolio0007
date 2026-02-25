@@ -63,12 +63,12 @@ const Contact = ({ id }) => {
 
     return (
         <section id={id} className="contact glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">GET IN TOUCH</h2>
+            <h2 className="section-title text-glow">Let's Talk</h2>
             
             <div className="contact-container">
                 <div className="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Have a project in mind? Want to collaborate? Feel free to reach out!</p>
+                    <h3>I'd Love to Hear From You</h3>
+                    <p>Whether you have a project idea, want to collaborate on something cool, or just want to chat about web development - I'm all ears! Drop me a message and I'll get back to you as soon as I can.</p>
                     
                     <div className="contact-methods">
                         <a href="mailto:anishjohn0007@gmail.com" className="contact-method">

@@ -155,6 +155,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* Offset for fixed navbar (70px) + spacing */
 }
 
 body {

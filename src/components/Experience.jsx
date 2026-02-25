@@ -11,9 +11,9 @@ const Experience = ({ id }) => {
             company: 'Almost Genius Labs',
             period: '6 months',
             responsibilities: [
-                'Developed and maintained web applications to enhance user experience and functionality.',
-                'Collaborated with teams to gather requirements and translate them into technical specifications.',
-                'Managed project timelines and deliverables, ensuring on-time completion of tasks.'
+                'Built and maintained web applications that people actually used - focusing on making sure they worked smoothly and made sense to users.',
+                'Worked closely with the team to understand what was needed and figured out how to make it happen technically.',
+                'Kept projects on track, made sure deadlines were met, and learned a ton about managing both code and expectations.'
             ]
         },
         {
@@ -21,10 +21,10 @@ const Experience = ({ id }) => {
             company: '21 RETECH Solution',
             period: 'May 2025 - Present',
             responsibilities: [
-                'Developed web applications utilizing HTML, CSS, and JavaScript.',
-                'Engaged with cutting-edge technologies and frameworks for modern web development.',
-                'Collaborated with senior developers to implement best practices and optimize code quality.',
-                'Participated in code reviews and learned industry-standard development workflows.'
+                'Creating web applications with HTML, CSS, and JavaScript - the building blocks I really enjoy working with.',
+                'Getting my hands on modern frameworks and tools, learning how professional developers approach problems.',
+                'Working alongside experienced developers who taught me better ways to write cleaner, more efficient code.',
+                'Participating in code reviews where I got honest feedback and learned that there\'s always room to improve.'
             ]
         }
     ];
@@ -35,7 +35,7 @@ const Experience = ({ id }) => {
 
     return (
         <section id={id} className="experience glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">PROFESSIONAL VOYAGES</h2>
+            <h2 className="section-title text-glow">My Journey So Far</h2>
             <div className="timeline">
                 {experiences.map((exp, index) => (
                     <div key={index} className="timeline-item">

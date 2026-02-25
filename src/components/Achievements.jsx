@@ -11,14 +11,14 @@ const Achievements = () => {
             description: 'IJARESM Publication, IEEE Publication'
         },
         {
-            title: 'Extracurricular Missions',
+            title: 'Sports & Activities',
             description: 'State level in Hockey, District level in Football'
         }
     ];
 
     return (
         <section className="achievements glass-panel scroll-reveal-right">
-            <h2 className="section-title text-glow">GALACTIC CREDENTIALS</h2>
+            <h2 className="section-title text-glow">Things I'm Proud Of</h2>
             <div className="achievements-list stagger-children">
                 {achievements.map((achievement, index) => (
                     <div key={index} className="achievement-item">

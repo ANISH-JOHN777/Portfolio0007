@@ -1,7 +1,9 @@
 import { Moon, Sun } from 'lucide-react';
 import './ThemeToggle.css';
 
-const ThemeToggle = ({ theme, onToggle }) => {
+const ThemeToggle = ({ theme, onToggle, isHidden }) => {
+    if (isHidden) return null;
+    
     return (
         <button
             className="theme-toggle"

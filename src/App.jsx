@@ -22,6 +22,7 @@ import './App.css';
 
 function App() {
   const [isGameOpen, setIsGameOpen] = useState(false);
+  const [hideNavbar, setHideNavbar] = useState(false);
   const { theme, toggleTheme } = useTheme();
   
   useScrollReveal();
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} />
+      <Navbar onPlayGame={() => setIsGameOpen(true)} theme={theme} isHidden={hideNavbar} />
       <Starfield />
 
       <div className="container">
@@ -52,9 +53,9 @@ function App() {
           <About id="about" />
           <Skills id="skills" />
           <Experience id="experience" />
-          <Projects id="projects" />
+          <Projects id="projects" onModalChange={setHideNavbar} />
           <GitHubStats id="github" />
-          <Blog id="blog" />
+          <Blog id="blog" onModalChange={setHideNavbar} />
 
           <div className="two-column-grid">
             <Education />
@@ -68,8 +69,8 @@ function App() {
       </div>
 
       {isGameOpen && <Game onClose={() => setIsGameOpen(false)} />}
-      <TourGuide />
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
+      <TourGuide isHidden={hideNavbar} />
+      <ThemeToggle theme={theme} onToggle={toggleTheme} isHidden={hideNavbar} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Calendar, Clock, ArrowRight, X } from 'lucide-react';
 import './Blog.css';
 
-const Blog = ({ id }) => {
+const Blog = ({ id, onModalChange }) => {
     const [selectedPost, setSelectedPost] = useState(null);
 
     const blogPosts = [
@@ -131,7 +131,7 @@ Performance optimization is an ongoing process that requires continuous monitori
 
     return (
         <section id={id} className="blog glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">BLOG & INSIGHTS</h2>
+            <h2 className="section-title text-glow">Thoughts & Learnings</h2>
 
             <div className="blog-container">
                 <div className="blog-grid stagger-children">
@@ -139,7 +139,10 @@ Performance optimization is an ongoing process that requires continuous monitori
                         <article
                             key={post.id}
                             className="blog-card"
-                            onClick={() => setSelectedPost(post)}
+                            onClick={() => {
+                                setSelectedPost(post);
+                                onModalChange?.(true);
+                            }}
                         >
                             <div className="blog-card-content">
                                 <h3 className="blog-title">{post.title}</h3>
@@ -175,11 +178,17 @@ Performance optimization is an ongoing process that requires continuous monitori
             </div>
 
             {selectedPost && (
-                <div className="blog-modal-overlay" onClick={() => setSelectedPost(null)}>
+                <div className="blog-modal-overlay" onClick={() => {
+                    setSelectedPost(null);
+                    onModalChange?.(false);
+                }}>
                     <div className="blog-modal" onClick={(e) => e.stopPropagation()}>
                         <button
                             className="close-btn"
-                            onClick={() => setSelectedPost(null)}
+                            onClick={() => {
+                                setSelectedPost(null);
+                                onModalChange?.(false);
+                            }}
                             aria-label="Close blog post"
                         >
                             <X size={24} />

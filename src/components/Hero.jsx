@@ -29,7 +29,7 @@ const Hero = ({ id }) => {
         pdf.setFont('Helvetica', 'normal');
         pdf.setFontSize(11);
         pdf.setTextColor(...lightColor);
-        pdf.text('Web Developer & Digital Explorer', 105, yPosition, { align: 'center' });
+        pdf.text('Web Developer | Problem Solver | Creative Builder', 105, yPosition, { align: 'center' });
 
         // Divider line
         yPosition += 8;
@@ -86,7 +86,7 @@ const Hero = ({ id }) => {
         };
 
         // Professional Summary
-        const summary = `Passionate Web Developer with hands-on experience building dynamic and user-friendly websites using HTML, CSS, JavaScript, and React. Adept at problem-solving and UI design, with a proven track record of creating real-world applications. Eager to innovate and tackle new technology challenges with a creative mindset.`;
+        const summary = `I'm a web developer who genuinely loves what I do. I've built real projects with HTML, CSS, JavaScript, and React - not just tutorials, but actual applications that solve real problems. From a bike rental platform to billing systems and AI-powered interview tools, I enjoy creating things that make people's lives easier. I'm always eager to learn new technologies and tackle interesting challenges. What drives me is building user-friendly experiences that people actually want to use.`;
         addSection('PROFESSIONAL SUMMARY', summary);
 
         // Education
@@ -161,7 +161,7 @@ Other: Web Design, Problem-Solving, UI/UX Design, n8n Automation`;
         pdf.setFont('Helvetica', 'normal');
         pdf.setFontSize(9);
         pdf.setTextColor(...lightColor);
-        pdf.text('Developed and maintained web applications | Collaborated with teams on requirements | Managed project timelines', 25, yPosition);
+        pdf.text('Built web apps people actually used | Worked with teams to understand needs | Kept projects on track', 25, yPosition);
 
         // Projects
         yPosition += 10;
@@ -177,11 +177,11 @@ Other: Web Design, Problem-Solving, UI/UX Design, n8n Automation`;
         yPosition += 8;
         
         const projects = [
-            { name: 'Blogvox', desc: 'Voice-to-text blog generation with PDF export | React, JavaScript' },
-            { name: 'Bike Rentals', desc: 'Peer-to-peer bike rental platform | Full-stack application' },
-            { name: 'Billing Page', desc: 'POS solution for invoice generation | React, PDF Export' },
-            { name: 'Typing Game', desc: 'Interactive browser game for typing speed improvement | Canvas API' },
-            { name: 'New Way', desc: 'AI-powered interview platform with video calls | Real-time features' }
+            { name: 'Blogvox', desc: 'Voice-to-blog tool - speak naturally and create formatted blog posts with PDF export' },
+            { name: 'Bike Rentals', desc: 'Community bike-sharing platform - helping neighbors rent bikes from each other' },
+            { name: 'Billing Page', desc: 'Simple invoicing tool for small businesses - no complexity, just quick bills' },
+            { name: 'Typing Game', desc: 'Fun way to improve typing speed - catch falling words before they disappear' },
+            { name: 'New Way', desc: 'Interview platform with AI resume enhancement and smart question generation' }
         ];
         
         projects.forEach(project => {
@@ -254,7 +254,7 @@ Other: Web Design, Problem-Solving, UI/UX Design, n8n Automation`;
         <header id={id} className="hero scroll-reveal" role="banner" aria-label="Hero section with introduction and contact">
             <div className="hero-content">
                 <h1 className="hero-title text-glow">M ANISH JOHN</h1>
-                <p className="hero-subtitle">Web Developer & Digital Explorer</p>
+                <p className="hero-subtitle">Web Developer | Problem Solver | Creative Builder</p>
 
                 <div className="hero-contact" aria-label="Contact information">
                     <div className="contact-item" aria-label="Phone">

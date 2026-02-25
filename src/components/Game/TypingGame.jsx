@@ -324,7 +324,7 @@ const TypingGame = ({ onClose }) => {
     <div className={`game-container ${theme === 'light' ? 'light-theme' : ''}`}>
       <div className="game-header">
         <button className="close-btn" onClick={onClose}>
-          <X size={16} />
+          <X size={18} />
         </button>
         <h2>Type Rush</h2>
         {gameState === 'playing' && (
@@ -333,10 +333,10 @@ const TypingGame = ({ onClose }) => {
               <ScoreBoard score={score} />
             </div>
             <div className="stat-item">
-              <span><Heart size={14} fill="currentColor" /> {lives}</span>
+              <span><Heart size={16} fill="currentColor" /> {lives}</span>
             </div>
             <div className="stat-item">
-              <span><Star size={14} fill="currentColor" /> Level {levelRef.current}</span>
+              <span><Star size={16} fill="currentColor" /> Level {levelRef.current}</span>
             </div>
           </div>
         )}

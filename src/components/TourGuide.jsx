@@ -1,78 +1,95 @@
-import { useState, useEffect } from 'react';
-import { Bot, X, ChevronRight, SkipForward } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Bot, X, ChevronRight, SkipForward, Sparkles, Hand, BarChart, Rocket, Code, Briefcase, Palette, TrendingUp, PenTool, Mail, PartyPopper, MessageCircle, Minimize2, Smile } from 'lucide-react';
+import useTheme from '../hooks/useTheme';
 import './TourGuide.css';
 
-const TourGuide = () => {
+const TourGuide = ({ isHidden }) => {
+    const { theme } = useTheme();
     const [isVisible, setIsVisible] = useState(false);
     const [currentStep, setCurrentStep] = useState(0);
     const [isMinimized, setIsMinimized] = useState(false);
     const [hasCompletedTour, setHasCompletedTour] = useState(false);
+    const initialMessage = "Hi there! I'm Anish - well, robot version of me! I built this portfolio and I'm so excited to show you around. Let me take you through everything I've created. Ready? Let's go!";
+    const [displayedMessage, setDisplayedMessage] = useState(initialMessage);
+    const [isTyping, setIsTyping] = useState(false);
+    const messageRef = useRef(initialMessage);
 
     const tourSteps = [
         {
             section: 'hero',
-            message: "👋 Welcome, space traveler! I'm your AI guide. Let me show you around this stellar portfolio!",
-            title: "Welcome!"
+            icon: Hand,
+            message: "Hi there! I'm Anish - well, robot version of me! I built this portfolio and I'm so excited to show you around. Let me take you through everything I've created. Ready? Let's go!",
+            title: "Hey, I'm Anish!"
         },
         {
             section: 'metrics',
-            message: "📊 Check out these impressive achievement metrics! These numbers showcase the developer's journey.",
-            title: "Success Metrics"
+            icon: BarChart,
+            message: "These numbers? Yeah, I'm pretty proud of them! They show my journey in web development - every commit, every project, every late night coding session. It's been quite a ride!",
+            title: "My Achievements"
         },
         {
             section: 'about',
-            message: "🚀 This is the About section - discover the story, passions, and journey of this developer!",
+            icon: Rocket,
+            message: "Here's my story! I wanted to share a bit about who I am, what drives me, and why I love building things for the web. This is the real me - no corporate jargon, just genuine passion!",
             title: "About Me"
         },
         {
             section: 'skills',
-            message: "💻 Explore the technical arsenal! These are the technologies and tools mastered over time.",
-            title: "Skills & Tech"
+            icon: Code,
+            message: "Check out the tools I work with! From React to Python, these are the technologies I've learned and love using. Some came easy, others took time, but I enjoyed learning every single one!",
+            title: "My Tech Stack"
         },
         {
             section: 'experience',
-            message: "💼 Professional voyages! Click on the cards to expand and see detailed responsibilities.",
-            title: "Experience"
+            icon: Briefcase,
+            message: "My professional journey so far! Click on each role to see what I actually did. I tried to write it like I'm telling a friend, not like a boring resume. Go ahead, explore!",
+            title: "Where I've Worked"
         },
         {
             section: 'projects',
-            message: "🎨 The showcase of creativity! Each project tells a unique story of problem-solving.",
-            title: "Projects"
+            icon: Palette,
+            message: "This is my favorite section - things I've actually built! Each project solved a real problem or scratched a personal itch. Click on any card to read the full story behind it!",
+            title: "Things I've Built"
         },
         {
             section: 'github',
-            message: "📈 GitHub stats reveal the coding activity - commits, contributions, and open-source love!",
-            title: "GitHub Stats"
+            icon: TrendingUp,
+            message: "My GitHub activity! This is where all the magic happens - every commit, every repository, every line of code. It's my digital workshop, and I'm always tinkering with something!",
+            title: "My GitHub"
         },
         {
             section: 'blog',
-            message: "✍️ Thoughts and insights! Dive into articles about technology, learning, and development.",
-            title: "Blog"
+            icon: PenTool,
+            message: "I like to write about what I learn! These posts are my way of sharing knowledge and documenting my journey. Maybe something here will help you too!",
+            title: "My Thoughts"
         },
         {
             section: 'contact',
-            message: "📬 Ready to connect? Reach out through the contact form - let's build something amazing together!",
-            title: "Get in Touch"
+            icon: Mail,
+            message: "Want to chat? I'd genuinely love to hear from you! Whether it's about a project, collaboration, or just to say hi - shoot me a message. I actually read and respond to everything!",
+            title: "Let's Connect"
         },
         {
             section: 'complete',
-            message: "🎉 Tour complete! Feel free to explore at your own pace. Need me again? Click the robot icon!",
-            title: "All Done!"
+            icon: PartyPopper,
+            message: "That's the full tour! Hope you enjoyed getting to know me and my work. Oh, and before you go - did you spot the Type Rush game? It's hidden somewhere on this page. Try to find it and test your typing speed! Feel free to explore more or reach out if you want to chat. Thanks for stopping by!",
+            title: "Tour Complete!"
         }
     ];
 
     useEffect(() => {
         // Check if tour was already completed
         const tourCompleted = localStorage.getItem('portfolioTourCompleted');
+        
         if (tourCompleted === 'true') {
             setHasCompletedTour(true);
             return;
         }
 
-        // Show welcome message after brief delay
+        // Always show the tour automatically until user completes it
         const timer = setTimeout(() => {
             setIsVisible(true);
-        }, 1500);
+        }, 300);
 
         return () => clearTimeout(timer);
     }, []);
@@ -104,13 +121,40 @@ const TourGuide = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [currentStep, hasCompletedTour, isVisible]);
 
+    // Typing animation effect
+    useEffect(() => {
+        const currentMessage = tourSteps[currentStep].message;
+        
+        // Skip if message hasn't changed
+        if (currentMessage === messageRef.current) return;
+        
+        messageRef.current = currentMessage;
+        setIsTyping(true);
+        setDisplayedMessage('');
+        
+        let index = 0;
+        const typingSpeed = 20; // milliseconds per character
+        
+        const typingInterval = setInterval(() => {
+            if (index < currentMessage.length) {
+                setDisplayedMessage(currentMessage.slice(0, index + 1));
+                index++;
+            } else {
+                setIsTyping(false);
+                clearInterval(typingInterval);
+            }
+        }, typingSpeed);
+        
+        return () => clearInterval(typingInterval);
+    }, [currentStep]);
+
     const handleNext = () => {
         if (currentStep < tourSteps.length - 1) {
             const nextStep = currentStep + 1;
             setCurrentStep(nextStep);
             
             if (nextStep === tourSteps.length - 1) {
-                // Completed tour
+                // On final step, just show the completion message without scrolling
                 completeTour();
             } else {
                 // Scroll to next section
@@ -125,23 +169,29 @@ const TourGuide = () => {
     const completeTour = () => {
         localStorage.setItem('portfolioTourCompleted', 'true');
         setHasCompletedTour(true);
-        setTimeout(() => setIsVisible(false), 3000);
-    };
-
-    const handleSkip = () => {
-        completeTour();
+        // Don't auto-hide anymore, let user click the final button
     };
 
     const handleClose = () => {
         setIsVisible(false);
+        // Tour will auto-open again on next refresh until user completes it
+    };
+
+    const handleSkip = () => {
+        completeTour();
+        handleClose();
     };
 
     const handleReopen = () => {
         setIsVisible(true);
         setIsMinimized(false);
+        // Reset tour state so scroll tracking works again
+        setHasCompletedTour(false);
+        setCurrentStep(0);
     };
 
     if (!isVisible && !hasCompletedTour) return null;
+    if (isHidden) return null;
 
     return (
         <>
@@ -149,47 +199,104 @@ const TourGuide = () => {
                 <button 
                     className="tour-guide-trigger"
                     onClick={handleReopen}
-                    aria-label="Restart tour guide"
+                    aria-label="Talk to Anish (robot guide)"
                 >
                     <Bot size={24} />
                 </button>
             )}
 
             {isVisible && (
-                <div className={`tour-guide ${isMinimized ? 'minimized' : ''}`}>
+                <div className={`tour-guide ${isMinimized ? 'minimized' : ''} ${theme === 'light' ? 'light-theme' : ''}`}>
                     <div className="tour-guide-robot">
-                        <Bot size={48} className="robot-icon" />
-                        <div className="robot-pulse"></div>
+                        <div className="robot-particles">
+                            <Sparkles className="particle particle-1" size={12} />
+                            <Sparkles className="particle particle-2" size={10} />
+                            <Sparkles className="particle particle-3" size={11} />
+                        </div>
+                        
+                        {/* Robot Head */}
+                        <div className="robot-head">
+                            <div className="robot-antenna"></div>
+                            <div className="robot-eyes">
+                                <div className={`robot-eye left ${isTyping ? 'talking' : ''}`}></div>
+                                <div className={`robot-eye right ${isTyping ? 'talking' : ''}`}></div>
+                            </div>
+                            <div className={`robot-mouth ${isTyping ? 'talking' : ''}`}></div>
+                        </div>
+                        
+                        {/* Robot Body */}
+                        <div className="robot-body">
+                            <div className="robot-panel"></div>
+                        </div>
+                        
+                        {/* Robot Arms */}
+                        <div className="robot-arm left"></div>
+                        <div className="robot-arm right"></div>
+                        
+                        {/* Robot Legs */}
+                        <div className="robot-legs">
+                            <div className="robot-leg left"></div>
+                            <div className="robot-leg right"></div>
+                        </div>
+                        
+                        <div className="robot-glow"></div>
                     </div>
 
                     {!isMinimized && (
-                        <div className="tour-guide-content">
+                        <div className="tour-guide-content speech-bubble">
+                            <div className="speech-bubble-tail"></div>
+                            <div className="content-shine"></div>
                             <div className="tour-guide-header">
-                                <h3 className="tour-guide-title">{tourSteps[currentStep].title}</h3>
+                                <div className="title-container">
+                                    <Bot size={16} className="title-icon" />
+                                    <h3 className="tour-guide-title">{tourSteps[currentStep].title}</h3>
+                                </div>
                                 <button 
                                     className="tour-guide-close"
                                     onClick={handleClose}
-                                    aria-label="Close tour guide"
+                                    aria-label="Close Anish's tour"
                                 >
-                                    <X size={18} />
+                                    <X size={14} />
                                 </button>
                             </div>
 
-                            <p className="tour-guide-message">{tourSteps[currentStep].message}</p>
+                            <div className="message-container">
+                                <div className="message-icon-wrapper">
+                                    {(() => {
+                                        const IconComponent = tourSteps[currentStep].icon;
+                                        return IconComponent ? <IconComponent size={20} className="message-icon" /> : null;
+                                    })()}
+                                </div>
+                                <p className="tour-guide-message">
+                                    {displayedMessage}
+                                    {isTyping && <span className="typing-cursor">|</span>}
+                                </p>
+                            </div>
+                            
+                            <div className="progress-bar-container">
+                                <div 
+                                    className="progress-bar-fill"
+                                    style={{ width: `${((currentStep + 1) / tourSteps.length) * 100}%` }}
+                                >
+                                    <div className="progress-glow"></div>
+                                </div>
+                            </div>
 
                             <div className="tour-guide-footer">
-                                <span className="tour-guide-progress">
-                                    {currentStep + 1} / {tourSteps.length}
-                                </span>
+                                <div className="progress-text">
+                                    <span className="step-number">{currentStep + 1}</span>
+                                    <span className="step-separator">/</span>
+                                    <span className="step-total">{tourSteps.length}</span>
+                                </div>
 
                                 <div className="tour-guide-actions">
                                     {currentStep < tourSteps.length - 1 && (
-                                        <>
+                                        <>  
                                             <button 
                                                 className="tour-guide-skip"
                                                 onClick={handleSkip}
                                             >
-                                                <SkipForward size={16} />
+                                                <SkipForward size={14} />
                                                 Skip Tour
                                             </button>
                                             <button 
@@ -197,16 +304,19 @@ const TourGuide = () => {
                                                 onClick={handleNext}
                                             >
                                                 Next
-                                                <ChevronRight size={16} />
+                                                <ChevronRight size={14} />
                                             </button>
                                         </>
                                     )}
                                     {currentStep === tourSteps.length - 1 && (
                                         <button 
                                             className="tour-guide-next"
-                                            onClick={handleClose}
+                                            onClick={() => {
+                                                completeTour();
+                                                handleClose();
+                                            }}
                                         >
-                                            Got it!
+                                            Thanks, Anish!
                                         </button>
                                     )}
                                 </div>
@@ -226,9 +336,9 @@ const TourGuide = () => {
                     <button 
                         className="tour-guide-minimize"
                         onClick={() => setIsMinimized(!isMinimized)}
-                        aria-label={isMinimized ? 'Expand tour guide' : 'Minimize tour guide'}
+                        aria-label={isMinimized ? 'See what Anish is saying' : 'Minimize robot guide'}
                     >
-                        {isMinimized ? '💬' : '➖'}
+                        {isMinimized ? <MessageCircle size={16} /> : <Minimize2 size={16} />}
                     </button>
                 </div>
             )}
