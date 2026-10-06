@@ -1,48 +1,79 @@
 .education {
-    padding: var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
 }
 
-.education-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
+.education-compact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.education-item {
-    padding: var(--spacing-md);
-    background: rgba(20, 25, 60, 0.3);
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--color-primary);
-    transition: all var(--transition-base);
+.education-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all var(--transition-fast);
 }
 
-.education-item:hover {
-    background: rgba(20, 25, 60, 0.5);
-    transform: translateX(5px);
-    border-left-color: var(--color-primary-light);
+.education-card:hover {
+  border-color: var(--border-gold);
 }
 
-.degree {
-    font-size: var(--text-xl);
-    color: var(--color-text-heading);
-    margin-bottom: var(--spacing-xs);
-    font-weight: 700;
+.edu-icon-wrap {
+  padding: 0.6rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.institution {
-    font-size: var(--text-base);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-xs);
-    font-weight: 600;
+.edu-icon {
+  color: var(--gold-primary);
 }
 
-.grade {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
+.edu-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-@media (max-width: 768px) {
-    .education {
-        padding: var(--spacing-lg);
-    }
+.edu-degree {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.edu-meta {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 0.6rem;
+}
+
+.edu-inst {
+  color: var(--text-secondary);
+}
+
+.edu-score-badge {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  padding: 0.15rem 0.55rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  width: fit-content;
 }

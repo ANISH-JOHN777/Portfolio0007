@@ -1,0 +1,144 @@
+.ventures {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.ventures-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-top: 1rem;
+}
+
+.venture-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.venture-card.agl-theme {
+  border: 1px solid var(--border-gold);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, rgba(17, 17, 17, 0.95) 100%);
+}
+
+.venture-card.agl-theme:hover {
+  border-color: var(--gold-light);
+  box-shadow: var(--glow-gold-lg);
+  transform: translateY(-4px);
+}
+
+.venture-card.delintra-theme {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(17, 17, 17, 0.95) 100%);
+}
+
+.venture-card.delintra-theme:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  transform: translateY(-4px);
+}
+
+.venture-card.ecommerce-theme {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(17, 17, 17, 0.95) 100%);
+}
+
+.venture-card.ecommerce-theme:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.venture-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.venture-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.agl-theme .venture-badge {
+  color: var(--gold-light);
+}
+
+.venture-icon {
+  color: var(--text-muted);
+}
+
+.venture-icon.agl {
+  color: var(--gold-primary);
+}
+
+.venture-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+}
+
+.venture-category {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+
+.delintra-theme .venture-category {
+  color: #a1a1aa;
+}
+
+.ecommerce-theme .venture-category {
+  color: #71717a;
+}
+
+.venture-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.venture-footer {
+  margin-top: auto;
+}
+
+.venture-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.agl-theme .venture-cta {
+  color: var(--gold-light);
+}
+
+.venture-cta:hover {
+  transform: translateX(4px);
+}
+
+@media (max-width: 960px) {
+  .ventures-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

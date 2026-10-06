@@ -1,29 +1,47 @@
+import { Award, BookOpen, Trophy, CheckCircle2 } from 'lucide-react';
 import './Achievements.css';
 
 const Achievements = () => {
-    const achievements = [
+    const categories = [
         {
-            title: 'Certifications',
-            description: 'Web Development, Full Stack Web Development'
+            title: 'PUBLICATIONS',
+            icon: <BookOpen size={18} className="achievement-cat-icon" />,
+            items: ['IJARESM Publication', 'IEEE Publication']
         },
         {
-            title: 'Publications',
-            description: 'IJARESM Publication, IEEE Publication'
+            title: 'INNOVATION',
+            icon: <Award size={18} className="achievement-cat-icon" />,
+            items: ['Hackathon Projects', 'NASA Space Apps Challenge Project']
         },
         {
-            title: 'Sports & Activities',
-            description: 'State level in Hockey, District level in Football'
+            title: 'SPORTS',
+            icon: <Trophy size={18} className="achievement-cat-icon" />,
+            items: ['State-Level Hockey', 'District-Level Football']
+        },
+        {
+            title: 'CERTIFICATIONS',
+            icon: <CheckCircle2 size={18} className="achievement-cat-icon" />,
+            items: ['Web Development Certification', 'Full-Stack Development Certification']
         }
     ];
 
     return (
-        <section className="achievements glass-panel scroll-reveal-right">
-            <h2 className="section-title text-glow">Things I'm Proud Of</h2>
-            <div className="achievements-list stagger-children">
-                {achievements.map((achievement, index) => (
-                    <div key={index} className="achievement-item">
-                        <h3 className="achievement-title">{achievement.title}</h3>
-                        <p className="achievement-description">{achievement.description}</p>
+        <section className="achievements glass-panel scroll-reveal">
+            <span className="section-tagline">HONORS &amp; ACCOMPLISHMENTS</span>
+            <h2 className="section-title">Beyond Building</h2>
+
+            <div className="achievements-compact-grid">
+                {categories.map((cat, idx) => (
+                    <div key={idx} className="achievement-box">
+                        <div className="achievement-box-header">
+                            {cat.icon}
+                            <h3 className="achievement-box-title">{cat.title}</h3>
+                        </div>
+                        <ul className="achievement-box-items">
+                            {cat.items.map((item, iIdx) => (
+                                <li key={iIdx}>{item}</li>
+                            ))}
+                        </ul>
                     </div>
                 ))}
             </div>

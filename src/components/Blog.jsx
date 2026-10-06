@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar, Clock, ArrowRight, X } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, X, BookOpen } from 'lucide-react';
 import './Blog.css';
 
 const Blog = ({ id, onModalChange }) => {
@@ -8,239 +8,177 @@ const Blog = ({ id, onModalChange }) => {
     const blogPosts = [
         {
             id: 1,
-            title: 'Building a Modern Web Portfolio with React & Vite',
-            excerpt: 'Learn how to create a high-performance portfolio website using React 19, Vite, and modern web technologies.',
-            content: `In today's competitive job market, a well-crafted portfolio is essential for showcasing your skills and attracting opportunities. Your online presence is often the first impression potential employers or clients will have of you. A modern, performant portfolio demonstrates not only your technical capabilities but also your commitment to quality and user experience. In this comprehensive post, I'll walk you through building a professional web portfolio using React and Vite, two of the most powerful tools in modern web development.
+            title: 'Building SaaS Products from Real-World Problems',
+            excerpt: 'Why the most valuable software platforms are created by solving immediate, unglamorous friction points rather than inventing fake markets.',
+            content: `The best SaaS ideas rarely come from brainstorming sessions in a vacuum. They come from experiencing real-world operational friction—repetitive manual steps, fragmented communications, or clumsy spreadsheet workflows that waste hours of productive human energy every single week.
 
-## Why React & Vite?
+## The Problem-First Framework
 
-React provides a component-based architecture that makes it easy to manage complex UIs, while Vite offers lightning-fast build times and excellent developer experience. React's ecosystem is matured with countless libraries and community support, making it ideal for scaling your portfolio as you add more features and projects. Vite's instant server start and efficient hot module replacement (HMR) means you'll spend less time waiting and more time coding.
+When evaluating product ideas at Almost Genius Labs, we start with simple diagnostic questions:
+1. Is this a recurring pain point occurring daily or weekly?
+2. Are people currently using clunky workarounds (spreadsheets, copy-pasting, manual emails)?
+3. Can a focused digital application reduce the task time by 80%?
 
-When you're building a portfolio, you want to focus on showcasing your work, not struggling with build tools. This is where Vite shines. Its next-generation frontend tooling approach makes development a joy, and the production builds are optimized to perfection.
+If the answer to all three is yes, you have identified a problem worth solving.
 
-## Key Features
+## From Friction to Product Spec
 
-Performance Optimized: Code splitting, lazy loading, and minification ensure your portfolio loads lightning-fast on any connection, improving user experience and SEO rankings significantly.
-
-SEO Friendly: Meta tags, Open Graph, JSON-LD structured data make your portfolio easily discoverable by search engines and shareable on social media platforms.
-
-Accessible: WCAG 2.1 compliance with proper ARIA labels ensures your portfolio is usable by everyone, including people with disabilities, expanding your reach and demonstrating inclusivity.
-
-Dark Mode: Theme toggle with localStorage persistence allows visitors to use your portfolio in their preferred visual format, reducing eye strain and improving overall experience.
-
-Mobile First: Responsive design for all devices ensures your portfolio looks stunning whether accessed on a smartphone, tablet, or desktop computer.
-
-## Implementation Tips
-
-1. Use CSS variables for consistent theming across your entire application, making it easy to update colors and styles globally
-2. Implement intersection observer for smooth scroll animations that trigger when elements come into view
-3. Optimize images with proper formats and sizes to reduce load times without compromising quality
-4. Preload critical resources for faster page loads and better perceived performance
-5. Use semantic HTML and proper heading hierarchy for better accessibility and SEO
-6. Implement proper error handling and loading states for better user feedback
-
-Building a portfolio is not just about showcasing projects—it's about demonstrating your technical expertise, attention to detail, and commitment to user experience. Every interaction matters, from smooth transitions to thoughtful error messages.`,
-            date: 'Feb 15, 2026',
+Building a product is not about feature volume; it is about core efficiency. An MVP should solve the primary bottleneck with extreme simplicity before adding secondary features. In SaaS, clarity of utility beats complexity of options every time.`,
+            date: 'Mar 2026',
             readTime: '5 min read',
-            tags: ['React', 'Vite', 'Web Development', 'Portfolio']
+            tags: ['SaaS', 'Product Strategy', 'Venture Building']
         },
         {
             id: 2,
-            title: 'Mastering React Hooks: From useState to Custom Hooks',
-            excerpt: 'A comprehensive guide to React Hooks with practical examples and best practices for modern React development.',
-            content: `React Hooks revolutionized how we write React components by allowing you to use state and other React features without writing a class component. This shift toward functional components has made React more intuitive and powerful. Before Hooks were introduced in React 16.8, managing state and side effects required complex class component logic.
+            title: 'What I Learned Building My First Startup Product',
+            excerpt: 'Lessons in product validation, feature prioritization, customer feedback loops, and avoiding early over-engineering.',
+            content: `Building your first product teaches you lessons that no textbook or tutorial can replicate. Here are the core realizations from taking an idea from prototype to real users:
 
-## What are Hooks?
+## 1. Speed to Feedback Over Perfection
+Code sitting on your local machine is unvalidated hypothesis. The faster you place a usable build in front of real users, the faster you discover what actually matters.
 
-Hooks are functions that let you "hook into" React state and lifecycle features from functional components. They allow you to extract component logic into reusable, shareable functions. This paradigm shift has fundamentally changed how developers approach React development, making code more modular and easier to test. Hooks follow two important rules that you must follow to ensure proper functionality and avoid subtle bugs in your application.
+## 2. Talk to Users, Watch Their Actions
+What users say they want in an interview is often different from what they actually interact with when using the product. Monitor user workflow patterns to uncover true UX priorities.
 
-Understanding how Hooks work under the hood helps you write more efficient and bug-free code. The React team designed Hooks to be flexible and composable, allowing you to combine them in powerful ways.
-
-## Essential Hooks
-
-useState: Manage component state and trigger re-renders when state changes, replacing the need for setState in class components.
-
-useEffect: Handle side effects like fetching data, subscribing to events, and cleaning up resources when components unmount.
-
-useContext: Access context values throughout your component tree without prop drilling, enabling cleaner and more maintainable code.
-
-useReducer: Complex state management for cases where useState isn't sufficient, allowing you to centralize state logic.
-
-Custom Hooks: Extract component logic into reusable functions that can be shared across multiple components, promoting DRY principles.
-
-## Best Practices
-
-1. Only call hooks at the top level of your function, not inside conditions or loops, to ensure consistent hook ordering
-2. Only call hooks from React functions or custom hooks, never from regular JavaScript functions
-3. Use the exhaustive-deps rule in ESLint to avoid stale closures and ensure your effects are properly synchronized
-4. Create custom hooks for reusable logic to promote code reuse and maintainability across your application
-5. Keep hooks small and focused on a single responsibility for better testability
-6. Use meaningful names for custom hooks that describe their purpose and return values
-
-Hooks make React code more readable, reusable, and maintainable. Learning to use them effectively is crucial for modern React development and will significantly improve your productivity.`,
-            date: 'Feb 10, 2026',
-            readTime: '8 min read',
-            tags: ['React', 'JavaScript', 'Hooks', 'Tutorial']
+## 3. Simplicity is the Ultimate Differentiation
+Early on, it is tempting to build every requested feature. But maintaining a tight, high-reliability core product creates far better user retention than a bloated app with a dozen partial tools.`,
+            date: 'Feb 2026',
+            readTime: '6 min read',
+            tags: ['Founder Lessons', 'MVP', 'Building']
         },
         {
             id: 3,
-            title: 'Web Performance Optimization: From Theory to Practice',
-            excerpt: 'Practical strategies to improve your website\'s performance and achieve excellent Lighthouse scores.',
-            content: `Web performance is not just a nice-to-have—it's a critical factor for user experience and SEO rankings. Users expect websites to load quickly, and even a one-second delay can result in significant bounce rates. Performance optimization is an investment in your users' satisfaction and your business metrics. Studies show that faster websites have higher conversion rates, better user engagement, and improved search rankings.
+            title: 'Why Small Businesses Need Better Automation',
+            excerpt: 'How no-code workflows, AI assistants, and automated systems can transform small business efficiency.',
+            content: `Small business operators often spend up to 40% of their working hours on administrative upkeep—manually sending invoices, copying client records, scheduling appointments, and following up on leads.
 
-## Performance Metrics
+## The Automation Advantage
 
-Understanding web performance metrics is the foundation for optimization. Different metrics measure different aspects of user experience, and collectively they tell the story of how your website performs.
+Modern automation tools like n8n, combined with AI endpoints, allow small businesses to operate with the leverage of enterprise teams without ballooning overhead.
 
-Core Web Vitals: LCP (Largest Contentful Paint), FID (First Input Delay), CLS (Cumulative Layout Shift) - these are Google's key metrics for page experience.
+- **Lead Processing:** Instant response triggers when an inquiry arrives.
+- **Billing & Invoicing:** Automated invoice generation upon project milestones.
+- **Customer Follow-ups:** Context-aware automated updates.
 
-Time to First Byte (TTFB): Server response time that indicates how quickly your server responds to requests from users.
+By automating repetitive administrative tasks, business owners can redirect their energy toward growth, strategy, and high-value customer relationships.`,
+            date: 'Feb 2026',
+            readTime: '4 min read',
+            tags: ['Automation', 'AI', 'Business Systems']
+        },
+        {
+            id: 4,
+            title: 'Building CastReach: From Idea to Product',
+            excerpt: 'The technical and product journey of designing an AI-assisted podcast networking and booking platform.',
+            content: `CastReach was born out of observing how podcast hosts and prospective guests connect. The traditional process involves cold emails, manual calendar tag, back-and-forth messaging, and lost prep materials across multiple channels.
 
-First Contentful Paint (FCP): When the first content appears on the user's screen, crucial for perceived performance.
+## Designing the Solution
 
-Time to Interactive (TTI): When the page becomes fully interactive and users can interact with elements without delay.
+We envisioned CastReach as a unified workspace for podcast collaboration:
+- **Discovery:** Finding relevant hosts and guests by topic and audience niche.
+- **AI-Assisted Pitching:** Drafting tailored outreach pitches based on speaker backgrounds.
+- **Workflow Pipeline:** Tracking pitch statuses from initial contact to recording date.
 
-## Optimization Techniques
+Building CastReach required balancing complex background workflows with a clean, frictionless interface so users can focus on building relationships.`,
+            date: 'Jan 2026',
+            readTime: '7 min read',
+            tags: ['CastReach', 'AI', 'SaaS']
+        },
+        {
+            id: 5,
+            title: 'Building a Modern Web Portfolio with React & Vite',
+            excerpt: 'Technical breakdown of building a high-performance, accessible founder website using React 19 and Vite.',
+            content: `A founder's portfolio is a digital identity headquarters. It needs to load lightning-fast, present clear brand hierarchy, and deliver clean micro-interactions without distracting clutter.
 
-Code Splitting: Load only required code using dynamic imports and route-based splitting to reduce initial bundle size.
+## Key Architecture Principles
 
-Lazy Loading: Defer non-critical resources and images until they're actually needed by the user.
-
-Image Optimization: Use modern formats like WebP with proper fallbacks, implement responsive images with srcset, and serve appropriately sized images.
-
-Caching: Leverage browser caching with proper headers, CDN caching for static assets, and service workers for offline support.
-
-Minification: Remove unnecessary characters from code without changing functionality, including HTML, CSS, and JavaScript.
-
-## Tools for Measurement
-
-Lighthouse: Google's comprehensive auditing tool that provides detailed performance reports and actionable recommendations.
-
-WebPageTest: Advanced testing tool that shows detailed waterfall charts and film strip views of page loading.
-
-GTmetrix: Visual representation of waterfall charts and comprehensive reports that make it easy to identify bottlenecks.
-
-Chrome DevTools Performance Tab: Browser-native tools for profiling and identifying performance issues in real-time.
-
-Performance optimization is an ongoing process that requires continuous monitoring and iteration. Regular performance audits help maintain optimal user experience as your application grows.`,
-            date: 'Feb 5, 2026',
-            readTime: '6 min read',
-            tags: ['Performance', 'Web Development', 'Optimization']
+- **Speed & Code Splitting:** Using Vite for instant HMR and optimized production bundles.
+- **Clean Tokenized CSS:** Maintaining full control over luxury dark aesthetics, typography, and responsive grid layouts without framework overhead.
+- **SEO & Meta Strategy:** Complete OpenGraph cards, structured JSON-LD schemas, and semantically hierarchy HTML.`,
+            date: 'Jan 2026',
+            readTime: '5 min read',
+            tags: ['React', 'Vite', 'Frontend Architecture']
         }
     ];
 
+    const openModal = (post) => {
+        setSelectedPost(post);
+        document.body.style.overflow = 'hidden';
+        onModalChange?.(true);
+    };
+
+    const closeModal = () => {
+        setSelectedPost(null);
+        document.body.style.overflow = 'auto';
+        onModalChange?.(false);
+    };
+
     return (
         <section id={id} className="blog glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">Thoughts & Learnings</h2>
+            <span className="section-tagline">THOUGHTS &amp; PERSPECTIVES</span>
+            <h2 className="section-title">Ideas &amp; Insights</h2>
 
-            <div className="blog-container">
-                <div className="blog-grid stagger-children">
-                    {blogPosts.map((post) => (
-                        <article
-                            key={post.id}
-                            className="blog-card"
-                            onClick={() => {
-                                setSelectedPost(post);
-                                onModalChange?.(true);
-                            }}
-                        >
-                            <div className="blog-card-content">
-                                <h3 className="blog-title">{post.title}</h3>
-                                <p className="blog-excerpt">{post.excerpt}</p>
-
-                                <div className="blog-meta">
-                                    <span className="meta-item">
-                                        <Calendar size={16} />
-                                        {post.date}
-                                    </span>
-                                    <span className="meta-item">
-                                        <Clock size={16} />
-                                        {post.readTime}
-                                    </span>
-                                </div>
-
-                                <div className="blog-tags">
-                                    {post.tags.map((tag, index) => (
-                                        <span key={index} className="blog-tag">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
+            <div className="blog-grid">
+                {blogPosts.map((post) => (
+                    <article
+                        key={post.id}
+                        className="blog-card"
+                        onClick={() => openModal(post)}
+                    >
+                        <div className="blog-card-body">
+                            <div className="blog-card-meta">
+                                <span className="meta-item"><Calendar size={13} /> {post.date}</span>
+                                <span className="meta-item"><Clock size={13} /> {post.readTime}</span>
                             </div>
 
-                            <button className="read-more">
-                                Read More
-                                <ArrowRight size={16} />
-                            </button>
-                        </article>
-                    ))}
-                </div>
-            </div>
+                            <h3 className="blog-card-title">{post.title}</h3>
+                            <p className="blog-card-excerpt">{post.excerpt}</p>
 
-            {selectedPost && (
-                <div className="blog-modal-overlay" onClick={() => {
-                    setSelectedPost(null);
-                    onModalChange?.(false);
-                }}>
-                    <div className="blog-modal" onClick={(e) => e.stopPropagation()}>
-                        <button
-                            className="close-btn"
-                            onClick={() => {
-                                setSelectedPost(null);
-                                onModalChange?.(false);
-                            }}
-                            aria-label="Close blog post"
-                        >
-                            <X size={24} />
-                        </button>
-
-                        <article className="blog-full">
-                            <h1>{selectedPost.title}</h1>
-
-                            <div className="blog-meta">
-                                <span className="meta-item">
-                                    <Calendar size={16} />
-                                    {selectedPost.date}
-                                </span>
-                                <span className="meta-item">
-                                    <Clock size={16} />
-                                    {selectedPost.readTime}
-                                </span>
-                            </div>
-
-                            <div className="blog-tags">
-                                {selectedPost.tags.map((tag, index) => (
-                                    <span key={index} className="blog-tag">
-                                        {tag}
-                                    </span>
+                            <div className="blog-tags-strip">
+                                {post.tags.map((tag, tIdx) => (
+                                    <span key={tIdx} className="tech-tag mini">{tag}</span>
                                 ))}
                             </div>
+                        </div>
 
-                            <div className="blog-content">
-                                {selectedPost.content.split('\n').map((line, index) => {
-                                    if (line.startsWith('## ')) {
-                                        return (
-                                            <h2 key={index} className="blog-heading">
-                                                {line.replace('## ', '')}
-                                            </h2>
-                                        );
-                                    } else if (line.startsWith('- ')) {
-                                        return (
-                                            <li key={index} className="blog-list-item">
-                                                {line.replace('- ', '')}
-                                            </li>
-                                        );
-                                    } else if (line.trim()) {
-                                        return (
-                                            <p key={index} className="blog-paragraph">
-                                                {line}
-                                            </p>
-                                        );
-                                    }
-                                    return null;
-                                })}
+                        <div className="blog-card-footer">
+                            <span className="read-article-link">
+                                Read Article <ArrowRight size={14} />
+                            </span>
+                        </div>
+                    </article>
+                ))}
+            </div>
+
+            {/* Reading Modal */}
+            {selectedPost && (
+                <div className="blog-modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
+                    <div className="blog-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="close-btn" onClick={closeModal} aria-label="Close modal">
+                            <X size={22} />
+                        </button>
+
+                        <div className="blog-modal-header">
+                            <div className="blog-card-meta">
+                                <span className="meta-item"><Calendar size={14} /> {selectedPost.date}</span>
+                                <span className="meta-item"><Clock size={14} /> {selectedPost.readTime}</span>
                             </div>
-                        </article>
+                            <h1 className="blog-modal-title">{selectedPost.title}</h1>
+
+                            <div className="blog-tags-strip" style={{ marginTop: '0.8rem' }}>
+                                {selectedPost.tags.map((tag, tIdx) => (
+                                    <span key={tIdx} className="badge-gold">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="blog-modal-body">
+                            {selectedPost.content.split('\n\n').map((paragraph, idx) => {
+                                if (paragraph.startsWith('## ')) {
+                                    return <h2 key={idx} className="blog-heading">{paragraph.replace('## ', '')}</h2>;
+                                }
+                                return <p key={idx} className="blog-paragraph">{paragraph}</p>;
+                            })}
+                        </div>
                     </div>
                 </div>
             )}

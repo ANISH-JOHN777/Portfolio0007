@@ -1,54 +1,111 @@
 .footer {
-    text-align: center;
-    padding: var(--spacing-2xl) 0;
-    margin-top: var(--spacing-3xl);
-    color: var(--color-text-secondary);
-    font-size: var(--text-sm);
-    border-top: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
+  width: 100%;
+  padding: 3rem var(--spacing-md) 2rem var(--spacing-md);
+  background: var(--bg-darkest);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--spacing-2xl);
 }
 
-.footer p {
-    color: var(--color-text-secondary);
-    margin: 0;
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.play-game-btn {
-    padding: var(--spacing-sm) var(--spacing-xl);
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-family: 'Orbitron', monospace;
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    color: white;
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+.footer-brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
 }
 
-.play-game-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.5), 0 0 15px rgba(167, 139, 250, 0.3);
-    border-color: var(--color-accent);
+.footer-positioning {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-top: 0.2rem;
 }
 
-.play-game-btn:active {
-    transform: translateY(0);
+.footer-ventures {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.footer-links-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-social-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-social-row a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.footer-social-row a:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.footer-game-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  color: var(--gold-light);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.footer-game-btn:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--gold-primary);
+  transform: translateY(-1px);
+}
+
+.footer-bottom {
+  max-width: 1240px;
+  margin: 1.5rem auto 0 auto;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-dim);
 }
 
 @media (max-width: 768px) {
-    .footer {
-        gap: var(--spacing-md);
-    }
-
-    .play-game-btn {
-        padding: var(--spacing-sm) var(--spacing-lg);
-        font-size: 0.9rem;
-    }
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-links-block {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
 }

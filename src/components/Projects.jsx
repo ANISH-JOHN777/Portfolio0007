@@ -1,23 +1,96 @@
 import { useState } from 'react';
-import { Rocket, X, Github, ExternalLink } from 'lucide-react';
+import { Rocket, X, Github, ExternalLink, ChevronDown, ChevronUp, Sparkles, Layers } from 'lucide-react';
 import './Projects.css';
 
 const Projects = ({ id, onModalChange }) => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [showArchive, setShowArchive] = useState(false);
 
-    const projects = [
+    const featuredProjects = [
+        {
+            id: 'castreach',
+            title: 'CASTREACH',
+            category: 'AI • SaaS • Product',
+            description: 'An AI-powered podcast networking platform connecting hosts, guests, and organizers through discovery, outreach, booking, messaging and collaboration.',
+            fullDescription: 'CastReach solves the fragmented workflow of podcast booking and guest outreach. Designed as an end-to-end SaaS platform, it provides intelligent guest discovery, automated AI-assisted outreach messages, unified booking calendars, real-time messaging, and shared episode preparation toolkits.',
+            technologies: ['React', 'Node.js', 'AI / LLM', 'Tailwind CSS', 'REST API'],
+            features: [
+                'Smart Guest & Host Discovery with filtered criteria matching.',
+                'AI-Assisted Personal Outreach message generation.',
+                'Integrated Booking & Calendar scheduling workflow.',
+                'Host & Guest rich professional profiles.',
+                'Real-time Messaging & Episode Preparation workspace.',
+                'Collaborative show notes and prep docs.'
+            ],
+            github: 'https://github.com/ANISH-JOHN777/CastReach',
+            live: null,
+            isFeatured: true
+        },
+        {
+            id: 'finaltrip-ai',
+            title: 'FINALTRIP AI',
+            category: 'AI • Travel • Product',
+            description: 'An AI-powered trip planning platform designed to create structured travel itineraries with destinations, routes, transportation, stays and trip planning workflows.',
+            fullDescription: 'FinalTrip AI turns vague travel ideas into detailed, day-by-day itineraries. Powered by generative AI models and mapping data, the platform generates optimized travel routes, recommends authentic local spots, organizes stays, and compiles complete budget and transportation timelines.',
+            technologies: ['React', 'Python', 'Flask', 'OpenAI API', 'Tailwind CSS'],
+            features: [
+                'AI-driven custom itinerary generation based on user preferences.',
+                'Multi-destination route optimization and travel time calculations.',
+                'Integrated accommodation & transportation planning modules.',
+                'Exportable, shareable travel itinerary links and PDFs.'
+            ],
+            github: 'https://github.com/ANISH-JOHN777/FinalTrip-AI',
+            live: null,
+            isFeatured: true
+        },
+        {
+            id: 'stickynode',
+            title: 'STICKYNODE',
+            category: 'Electron • Productivity • Desktop',
+            description: 'A lightweight desktop productivity tool designed around persistent, contextual notes and reminders.',
+            fullDescription: 'StickyNode is a minimal desktop note-taking utility built with Electron. Designed for power users and founders, it keeps critical notes, code snippets, and contextual reminders pinned to your desktop workspace with zero latency and low memory footprint.',
+            technologies: ['Electron', 'JavaScript', 'Node.js', 'CSS3'],
+            features: [
+                'Persistent floating desktop note windows with custom opacity.',
+                'Contextual reminder triggers and quick search.',
+                'Full Markdown formatting and instant hotkey access.',
+                'Local data storage ensuring 100% privacy and offline operation.'
+            ],
+            github: 'https://github.com/ANISH-JOHN777/StickyNode',
+            live: null,
+            isFeatured: true
+        },
+        {
+            id: 'asteroid-impact',
+            title: 'ASTEROID IMPACT SIMULATOR',
+            category: 'React • Three.js • Flask • Data Visualization',
+            description: 'An interactive asteroid impact simulation exploring planetary impact scenarios through data-driven visualization.',
+            fullDescription: 'Built with Three.js and Flask backend math engines, this simulator models orbital trajectories, kinetic impact energy, blast radius estimations, and planetary impact scenarios through interactive 3D WebGL visualizations.',
+            technologies: ['React', 'Three.js', 'Flask', 'Python', 'WebGL'],
+            features: [
+                '3D WebGL interactive globe with accurate orbital mechanics.',
+                'Real-time kinetic energy, crater diameter, and blast radius calculation.',
+                'Dynamic parameter controls for velocity, diameter, density, and impact angle.',
+                'Scientific data overlay and impact impact reports.'
+            ],
+            github: 'https://github.com/ANISH-JOHN777/Asteroid-Impact-Simulator',
+            live: null,
+            isFeatured: true
+        }
+    ];
+
+    const archiveProjects = [
         {
             id: 'blogvox',
             title: 'Blogvox',
-            date: 'Sep 2025',
-            description: 'Turn your voice into blog posts - just speak and watch your words become content.',
-            fullDescription: 'I built this because I love the idea of creating content without being glued to a keyboard. Blogvox lets you literally talk your way through a blog post. Just hit record, speak naturally, and the app transcribes everything in real-time using your browser\'s speech recognition. Then it takes that raw text and organizes it into something that actually looks like a proper blog post - with headings, paragraphs, the works. When you\'re happy with it, you can export it as a clean PDF. It\'s perfect for those moments when typing feels like too much work, or when ideas flow better when you speak them out loud.',
-            technologies: ['HTML', 'CSS', 'JavaScript'],
+            category: 'Web App • Voice AI',
+            description: 'Turn your voice into blog posts - speak naturally and generate formatted blog posts with PDF export.',
+            fullDescription: 'Blogvox allows creators to speak naturally into their browser and instantly transcribes and formats spoken words into clean blog posts with headings, paragraphs, and instant PDF download.',
+            technologies: ['HTML', 'CSS', 'JavaScript', 'Speech Recognition'],
             features: [
-                'Real-time voice transcription - speak and see your words appear instantly.',
-                'Smart formatting that turns your speech into structured blog content.',
-                'Everything happens in your browser - no server needed, completely private.',
-                'One-click PDF export so you can share or save your content anywhere.'
+                'Real-time voice transcription in browser.',
+                'Smart paragraph & title formatting.',
+                'One-click PDF export.'
             ],
             github: 'https://github.com/ANISH-JOHN777/blogvox',
             live: 'https://blogvox-demo.netlify.app'
@@ -25,14 +98,14 @@ const Projects = ({ id, onModalChange }) => {
         {
             id: 'bikeRentals',
             title: 'Bike Rentals',
-            description: 'A platform where people can rent out their bikes to others in the community.',
-            fullDescription: 'This project came from thinking about all those bikes just sitting unused in garages. Why not make it easy for bike owners to earn some money while helping others get around? I created a simple platform where anyone can list their bike for rent. You set your own price, add some photos, write a description, and boom - your bike is available to the community. On the flip side, if you need a bike for a day or weekend, you can browse what\'s available nearby, check out the details, and book it. It\'s like Airbnb but for bikes. I wanted to make the whole thing straightforward - no complicated processes, just neighbors helping neighbors get around.',
+            category: 'Web App • Marketplace',
+            description: 'A peer-to-peer platform where neighbors can rent out unused bikes to community members.',
+            fullDescription: 'A community marketplace connecting bike owners with local renters. Users can create listings, upload photos, set custom rental prices, and connect directly.',
             technologies: ['HTML', 'CSS', 'JavaScript'],
             features: [
-                'Easy account creation for both bike owners and renters.',
-                'Simple listing process - add photos, set your price, and you\'re done.',
-                'Search and filter options to find exactly the bike you need.',
-                'Direct connection between owners and renters - keep it simple and personal.'
+                'Owner & Renter profile management.',
+                'Bike listing catalog with search and filters.',
+                'Direct rental request workflow.'
             ],
             github: 'https://github.com/ANISH-JOHN777/bike-rentals',
             live: 'https://bike-rentals-demo.netlify.app'
@@ -40,14 +113,14 @@ const Projects = ({ id, onModalChange }) => {
         {
             id: 'billingPage',
             title: 'Billing Page',
-            description: 'Quick and easy bill generation for small businesses - print or save as PDF.',
-            fullDescription: 'I made this for small shop owners and freelancers who just need to create bills without all the complexity of heavy accounting software. You enter customer details, add items with prices, and the app does all the math automatically - including taxes and discounts if needed. Then you can either print it right away or save it as a PDF to email to your customer. No subscriptions, no cloud storage, no fuss. Just a clean, professional bill that takes seconds to create. I\'ve seen how much time people waste on billing, so I wanted to make something that just... works.',
+            category: 'Web App • FinTech Tool',
+            description: 'Quick invoice generation for small businesses - print or export professional bills as PDF.',
+            fullDescription: 'Designed for small business owners and freelancers to quickly build clean itemized bills with automatic tax calculation and print/PDF export.',
             technologies: ['HTML', 'CSS', 'JavaScript'],
             features: [
-                'Add items on the fly with automatic total calculations.',
-                'Store basic customer info so you don\'t have to retype everything.',
-                'Print-ready format that looks professional on paper.',
-                'Generate PDF invoices you can email or save for records.'
+                'Instant line-item calculations & tax compute.',
+                'Print-ready professional invoice layout.',
+                'Local browser persistence.'
             ],
             github: 'https://github.com/ANISH-JOHN777/billing-page',
             live: 'https://billing-page-demo.netlify.app'
@@ -55,14 +128,14 @@ const Projects = ({ id, onModalChange }) => {
         {
             id: 'typingGame',
             title: 'Typing Game',
-            description: 'A fun way to get faster at typing - catch the falling words before they hit the ground!',
-            fullDescription: 'Learning to type faster can be boring, so I turned it into a game. Words fall from the top of the screen, and you have to type them correctly before they disappear at the bottom. Miss a word and it speeds up, making things more challenging. The game tracks your typing speed (WPM) and accuracy, so you can see yourself improving over time. I wanted something that felt more like playing than practicing. Whether you\'re trying to improve your typing for work or just want a fun challenge, this game makes it actually enjoyable. Plus, there\'s something oddly satisfying about the frantic rush when words start falling faster!',
+            category: 'Web App • Game',
+            description: 'Interactive speed-typing game tracking WPM and accuracy as words descend.',
+            fullDescription: 'A fast-paced web game designed to test and improve typing speed by catching falling words before they hit the bottom edge.',
             technologies: ['HTML', 'CSS', 'JavaScript'],
             features: [
-                'Random word generation keeps every game fresh and different.',
-                'Instant feedback - you know immediately if you got it right.',
-                'Track your typing speed (WPM) and accuracy in real-time.',
-                'Progressive difficulty that adapts to challenge you more as you improve.'
+                'Real-time WPM & accuracy metric tracking.',
+                'Adaptive speed progression.',
+                'High score local storage.'
             ],
             github: 'https://github.com/ANISH-JOHN777/typing-game',
             live: 'https://typing-game-demo.netlify.app'
@@ -70,14 +143,14 @@ const Projects = ({ id, onModalChange }) => {
         {
             id: 'newWay',
             title: 'New Way',
-            description: 'Rethinking interviews with AI - helping both candidates and HR have better conversations.',
-            fullDescription: 'Job interviews are stressful for everyone involved, so I wanted to build something that makes them better. This platform brings candidates and HR together through smooth video calls, but with some AI superpowers. For candidates, there\'s an AI tool that looks at your resume and the job description, then suggests ways to make your resume stronger and more relevant. For HR folks, the AI reads the candidate\'s resume and generates smart, tailored interview questions on the spot - no more generic "tell me about yourself" stuff. The goal was to make interviews more productive and less awkward for everyone. Real conversations, better preparation, less guesswork.',
-            technologies: ['HTML', 'CSS', 'JavaScript'],
+            category: 'Web App • AI Hiring',
+            description: 'Rethinking interviews with AI resume analysis and smart question generation.',
+            fullDescription: 'A platform combining video communication with AI resume auditing for candidates and tailored interview question generation for HR.',
+            technologies: ['HTML', 'CSS', 'JavaScript', 'WebRTC'],
             features: [
-                'Crystal-clear video and audio calls using modern WebRTC technology.',
-                'AI-powered resume analyzer that gives candidates actionable improvement tips.',
-                'Automatic generation of relevant interview questions based on each candidate\'s background.',
-                'A modern interview experience that feels more collaborative than interrogative.'
+                'AI resume feedback generator.',
+                'Tailored interview question generation.',
+                'WebRTC video interface.'
             ],
             github: 'https://github.com/ANISH-JOHN777/new-way',
             live: 'https://new-way-demo.netlify.app'
@@ -98,66 +171,106 @@ const Projects = ({ id, onModalChange }) => {
 
     return (
         <>
-            <section id={id} className="projects scroll-reveal" aria-label="Projects portfolio">
-                <h2 className="section-title text-glow">Things I've Built</h2>
+            <section id={id} className="projects glass-panel scroll-reveal">
+                <span className="section-tagline">PORTFOLIO &amp; LABS</span>
+                <h2 className="section-title">Products &amp; Experiments</h2>
 
-                <div className="projects-grid stagger-children">
-                    {projects.map((project, index) => (
-                        <button
+                {/* Main Featured Products */}
+                <div className="featured-projects-grid">
+                    {featuredProjects.map((project) => (
+                        <div
                             key={project.id}
-                            className="project-card card"
+                            className="featured-project-card"
                             onClick={() => openModal(project)}
-                            style={{ animationDelay: `${index * 0.1}s` }}
-                            aria-label={`Open details for ${project.title} project`}
                         >
-                            <div className="project-header">
-                                <Rocket className="project-icon icon-glow" size={24} aria-hidden="true" />
-                                <h3 className="project-title">{project.title}</h3>
+                            <div className="card-top-bar">
+                                <span className="project-badge"><Sparkles size={13} /> {project.category}</span>
+                                <Rocket size={20} className="card-rocket-icon" />
                             </div>
-                            {project.date && <p className="project-date">{project.date}</p>}
-                            <p className="project-description">{project.description}</p>
-                            <div className="project-tech" aria-label="Technologies used">
-                                {project.technologies.map((tech, techIndex) => (
-                                    <span key={techIndex} className="tech-tag">
-                                        {tech}
-                                    </span>
+
+                            <h3 className="project-name">{project.title}</h3>
+                            <p className="project-desc">{project.description}</p>
+
+                            <div className="project-tech-strip">
+                                {project.technologies.map((tech, tIdx) => (
+                                    <span key={tIdx} className="tech-tag">{tech}</span>
                                 ))}
                             </div>
-                        </button>
+
+                            <div className="project-card-footer">
+                                <span className="view-details-btn">View Details &rarr;</span>
+                            </div>
+                        </div>
                     ))}
+                </div>
+
+                {/* Secondary Section - Project Archive */}
+                <div className="archive-section">
+                    <button 
+                        className="archive-toggle-btn"
+                        onClick={() => setShowArchive(!showArchive)}
+                    >
+                        <Layers size={18} />
+                        <span>Earlier Experiments &amp; Project Archive ({archiveProjects.length})</span>
+                        {showArchive ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    </button>
+
+                    {showArchive && (
+                        <div className="archive-grid animate-fadeIn">
+                            {archiveProjects.map((project) => (
+                                <div 
+                                    key={project.id} 
+                                    className="archive-card"
+                                    onClick={() => openModal(project)}
+                                >
+                                    <div className="archive-card-header">
+                                        <h4 className="archive-title">{project.title}</h4>
+                                        <span className="archive-cat">{project.category}</span>
+                                    </div>
+                                    <p className="archive-desc">{project.description}</p>
+                                    <div className="archive-tech-row">
+                                        {project.technologies.slice(0, 3).map((t, i) => (
+                                            <span key={i} className="tech-tag mini">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
-            {/* Modal */}
+            {/* Modal Detail Window */}
             {selectedProject && (
-                <div className="modal-overlay" onClick={closeModal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
-                    <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={closeModal} aria-label="Close project details modal">
-                            <X size={24} aria-hidden="true" />
+                <div className="modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={closeModal} aria-label="Close modal">
+                            <X size={22} />
                         </button>
 
                         <div className="modal-header">
-                            <Rocket className="icon-glow" size={32} aria-hidden="true" />
-                            <h2 className="modal-title text-glow" id="modal-title">{selectedProject.title}</h2>
+                            <span className="badge-gold">{selectedProject.category}</span>
+                            <h2 className="modal-project-title">{selectedProject.title}</h2>
                         </div>
 
-                        <p className="modal-description">{selectedProject.fullDescription}</p>
+                        <p className="modal-full-desc">{selectedProject.fullDescription}</p>
 
-                        <div className="modal-section">
-                            <h3 className="modal-subtitle">Key Features</h3>
-                            <ul className="modal-features">
-                                {selectedProject.features.map((feature, index) => (
-                                    <li key={index}>{feature}</li>
+                        <div className="modal-features-block">
+                            <h3 className="modal-sub-heading">Key Capabilities &amp; Architecture:</h3>
+                            <ul className="modal-features-list">
+                                {selectedProject.features.map((feat, idx) => (
+                                    <li key={idx}>{feat}</li>
                                 ))}
                             </ul>
                         </div>
 
-                        <div className="modal-tech">
-                            {selectedProject.technologies.map((tech, index) => (
-                                <span key={index} className="tech-tag">
-                                    {tech}
-                                </span>
-                            ))}
+                        <div className="modal-tech-stack">
+                            <h4 className="modal-sub-heading">Tech Stack:</h4>
+                            <div className="modal-tags">
+                                {selectedProject.technologies.map((tech, idx) => (
+                                    <span key={idx} className="tech-tag">{tech}</span>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="modal-actions">
@@ -166,11 +279,10 @@ const Projects = ({ id, onModalChange }) => {
                                     href={selectedProject.github} 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="action-btn github-btn"
-                                    aria-label={`View ${selectedProject.title} on GitHub - opens in new window`}
+                                    className="btn-outline-gold"
                                 >
-                                    <Github size={20} aria-hidden="true" />
-                                    GitHub
+                                    <Github size={18} />
+                                    <span>View GitHub Repo</span>
                                 </a>
                             )}
                             {selectedProject.live && (
@@ -178,11 +290,10 @@ const Projects = ({ id, onModalChange }) => {
                                     href={selectedProject.live} 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="action-btn live-btn"
-                                    aria-label={`View ${selectedProject.title} live demo - opens in new window`}
+                                    className="btn-gold"
                                 >
-                                    <ExternalLink size={20} aria-hidden="true" />
-                                    Live Demo
+                                    <ExternalLink size={18} />
+                                    <span>Launch Live Demo</span>
                                 </a>
                             )}
                         </div>

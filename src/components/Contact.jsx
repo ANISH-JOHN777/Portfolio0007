@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { Mail, Phone, Send, AlertCircle, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Send, Linkedin, Github, Code2, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 import './Contact.css';
 
 const Contact = ({ id }) => {
     const [formState, setFormState] = useState({
         name: '',
         email: '',
+        subject: 'Product / Business Opportunity',
         message: ''
     });
-    
-    const [status, setStatus] = useState(null); // null, loading, success, error
+
+    const [status, setStatus] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
@@ -22,17 +23,16 @@ const Contact = ({ id }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         if (!formState.name || !formState.email || !formState.message) {
-            setErrorMessage('Please fill in all fields');
+            setErrorMessage('Please fill in all required fields.');
             setStatus('error');
             return;
         }
 
         setStatus('loading');
-        
+
         try {
-            // Send email using Formspree
             const response = await fetch('https://formspree.io/f/mzdajbbp', {
                 method: 'POST',
                 headers: {
@@ -41,74 +41,120 @@ const Contact = ({ id }) => {
                 body: JSON.stringify({
                     name: formState.name,
                     email: formState.email,
+                    subject: formState.subject,
                     message: formState.message,
-                    _subject: `New message from ${formState.name}`,
+                    _subject: `New inquiry from ${formState.name} [${formState.subject}]`,
                     _replyto: formState.email
                 })
             });
 
             if (response.ok) {
                 setStatus('success');
-                setFormState({ name: '', email: '', message: '' });
-                setTimeout(() => setStatus(null), 3000);
+                setFormState({ name: '', email: '', subject: 'Product / Business Opportunity', message: '' });
+                setTimeout(() => setStatus(null), 4000);
             } else {
                 throw new Error('Failed to send');
             }
         } catch (err) {
-            setErrorMessage('Failed to send message. Please try again or email directly to anishjohn0007@gmail.com');
+            setErrorMessage('Could not transmit message. Please email directly to anishjohn0007@gmail.com');
             setStatus('error');
-            console.error('Form submission error:', err);
         }
     };
 
     return (
         <section id={id} className="contact glass-panel scroll-reveal">
-            <h2 className="section-title text-glow">Let's Talk</h2>
-            
-            <div className="contact-container">
-                <div className="contact-info">
-                    <h3>I'd Love to Hear From You</h3>
-                    <p>Whether you have a project idea, want to collaborate on something cool, or just want to chat about web development - I'm all ears! Drop me a message and I'll get back to you as soon as I can.</p>
-                    
-                    <div className="contact-methods">
-                        <a href="mailto:anishjohn0007@gmail.com" className="contact-method">
-                            <Mail size={24} aria-hidden="true" />
-                            <span>anishjohn0007@gmail.com</span>
+            <span className="section-tagline">INITIATE COLLABORATION</span>
+            <h2 className="section-title">Let's Build Something</h2>
+
+            <div className="contact-grid">
+                <div className="contact-info-panel">
+                    <p className="contact-lead-text">
+                        I'm always interested in connecting with founders, builders, businesses, and people working on interesting problems.
+                    </p>
+
+                    <div className="collaboration-reasons">
+                        <span className="reasons-heading">Whether you're looking to:</span>
+                        <ul className="reasons-list">
+                            <li>Build a product</li>
+                            <li>Automate a business process</li>
+                            <li>Explore a technology idea</li>
+                            <li>Collaborate on a startup</li>
+                            <li>Discuss a business opportunity</li>
+                        </ul>
+                        <p className="reasons-footer">I'd be happy to connect.</p>
+                    </div>
+
+                    <div className="direct-contact-methods">
+                        <a href="mailto:anishjohn0007@gmail.com" className="contact-method-card">
+                            <Mail size={20} className="method-icon" />
+                            <div className="method-text">
+                                <span className="method-label">Direct Email</span>
+                                <span className="method-val">anishjohn0007@gmail.com</span>
+                            </div>
                         </a>
-                        <a href="tel:+918072937674" className="contact-method">
-                            <Phone size={24} aria-hidden="true" />
-                            <span>+91 8072937674</span>
+
+                        <a href="tel:+918072937674" className="contact-method-card">
+                            <Phone size={20} className="method-icon" />
+                            <div className="method-text">
+                                <span className="method-label">Phone &amp; WhatsApp</span>
+                                <span className="method-val">+91 8072937674</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div className="contact-social-links">
+                        <a href="https://www.linkedin.com/in/m-anish-raj/" target="_blank" rel="noopener noreferrer" className="social-box" title="LinkedIn Profile">
+                            <Linkedin size={18} />
+                        </a>
+                        <a href="https://github.com/ANISH-JOHN777/" target="_blank" rel="noopener noreferrer" className="social-box" title="GitHub Profile">
+                            <Github size={18} />
+                        </a>
+                        <a href="https://leetcode.com/u/anishjohnm/" target="_blank" rel="noopener noreferrer" className="social-box" title="LeetCode Profile">
+                            <Code2 size={18} />
                         </a>
                     </div>
                 </div>
 
-                <form className="contact-form" onSubmit={handleSubmit} method="POST" noValidate>
+                <form className="contact-form-panel" onSubmit={handleSubmit} noValidate>
                     <div className="form-group">
-                        <label htmlFor="name">Name *</label>
+                        <label htmlFor="name">Your Name *</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
                             value={formState.name}
                             onChange={handleChange}
-                            placeholder="Your name"
-                            aria-label="Your name"
+                            placeholder="John Doe"
                             required
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email">Email *</label>
+                        <label htmlFor="email">Email Address *</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
                             value={formState.email}
                             onChange={handleChange}
-                            placeholder="your@email.com"
-                            aria-label="Your email"
+                            placeholder="john@company.com"
                             required
                         />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="subject">Topic / Purpose</label>
+                        <select
+                            id="subject"
+                            name="subject"
+                            value={formState.subject}
+                            onChange={handleChange}
+                        >
+                            <option value="Product / Business Opportunity">Product / Business Opportunity</option>
+                            <option value="SaaS & Automation Consultation">SaaS &amp; Automation Consultation</option>
+                            <option value="Startup Collaboration">Startup Collaboration</option>
+                            <option value="General Tech Inquiry">General Tech Inquiry</option>
+                        </select>
                     </div>
 
                     <div className="form-group">
@@ -118,42 +164,37 @@ const Contact = ({ id }) => {
                             name="message"
                             value={formState.message}
                             onChange={handleChange}
-                            placeholder="Tell me about your project..."
-                            rows="5"
-                            aria-label="Your message"
+                            placeholder="Briefly describe your idea, requirement, or proposition..."
+                            rows="4"
                             required
                         />
                     </div>
 
                     {status === 'error' && (
                         <div className="form-status error">
-                            <AlertCircle size={20} aria-hidden="true" />
+                            <AlertCircle size={18} />
                             <span>{errorMessage}</span>
                         </div>
                     )}
 
                     {status === 'success' && (
                         <div className="form-status success">
-                            <CheckCircle size={20} aria-hidden="true" />
-                            <span>Message sent successfully! I'll get back to you soon.</span>
+                            <CheckCircle2 size={18} />
+                            <span>Message transmitted successfully! I will get back to you shortly.</span>
                         </div>
                     )}
 
                     <button 
                         type="submit" 
-                        className="submit-btn"
+                        className="btn-gold submit-btn"
                         disabled={status === 'loading'}
-                        aria-label="Send message"
                     >
                         {status === 'loading' ? (
-                            <>
-                                <span className="spinner"></span>
-                                Sending...
-                            </>
+                            <span>Sending...</span>
                         ) : (
                             <>
-                                <Send size={20} aria-hidden="true" />
-                                Send Message
+                                <span>Let's Talk</span>
+                                <ArrowRight size={18} />
                             </>
                         )}
                     </button>

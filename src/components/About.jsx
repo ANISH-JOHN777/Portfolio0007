@@ -1,26 +1,84 @@
+import profileImg from '../assets/profile.jpg';
 import './About.css';
 
 const About = ({ id }) => {
     return (
-        <section id={id} className="about glass-panel scroll-reveal-scale">
-            <h2 className="section-title text-glow">About Me</h2>
-            <p className="about-text">
-                Hey there! I'm Anish, and I genuinely love building things for the web. What started as curiosity 
-                about "how websites work" turned into a real passion. I've spent countless hours learning HTML, CSS, 
-                JavaScript, and React - not because I had to, but because I wanted to.
-            </p>
-            <p className="about-text" style={{marginTop: '1rem'}}>
-                I'm not just writing code for the sake of it. I care about making websites that people actually 
-                enjoy using. Whether it's a bike rental platform, a billing system for small businesses, or an 
-                interview tool powered by AI, I try to think about the real person on the other side of the screen. 
-                What would make their day easier? What would make them smile?
-            </p>
-            <p className="about-text" style={{marginTop: '1rem'}}>
-                I won't pretend I know everything - I'm still learning every single day. But that's what I love 
-                about this field. There's always something new to explore, a problem to solve, or a better way to 
-                do things. If you're looking for someone who's enthusiastic, curious, and always willing to roll up 
-                their sleeves to figure things out, let's talk!
-            </p>
+        <section id={id} className="about glass-panel scroll-reveal">
+            <span className="section-tagline">BACKGROUND &amp; PHILOSOPHY</span>
+            <h2 className="section-title">About Me</h2>
+
+            <div className="about-layout-grid">
+                <div className="about-content">
+                    <p className="about-lead">
+                        I'm an entrepreneur and product builder who enjoys turning real-world problems into practical technology.
+                    </p>
+
+                    <p className="about-text">
+                        I work at the intersection of technology, products, and business — from identifying a problem and designing the solution to building, testing, and taking it toward real users.
+                    </p>
+
+                    <div className="about-ventures-card">
+                        <h3 className="ventures-card-title">Currently Building</h3>
+
+                        <div className="venture-mention">
+                            <div className="venture-mention-header">
+                                <span className="venture-dot gold"></span>
+                                <span className="venture-name">Almost Genius Labs</span>
+                            </div>
+                            <p className="venture-desc">focused on software products, SaaS, AI, automation, and digital solutions.</p>
+                        </div>
+
+                        <div className="venture-mention">
+                            <div className="venture-mention-header">
+                                <span className="venture-dot"></span>
+                                <span className="venture-name">Delintra Technologies</span>
+                            </div>
+                            <p className="venture-desc">focused on technology-driven products, business opportunities, and digital solutions.</p>
+                        </div>
+                    </div>
+
+                    <p className="about-text">
+                        Alongside my technology ventures, I'm also building hands-on experience in e-commerce, sales, customer acquisition, and business development.
+                    </p>
+
+                    <p className="about-text">
+                        I enjoy exploring problems that are underserved, designing simple solutions, and turning ideas into products that can create measurable value.
+                    </p>
+
+                    <div className="about-interests-box">
+                        <span className="interests-label">PRIMARY INTERESTS</span>
+                        <div className="interests-tags">
+                            <span className="interest-tag">SaaS</span>
+                            <span className="interest-tag">AI</span>
+                            <span className="interest-tag">Automation</span>
+                            <span className="interest-tag">Software Products</span>
+                            <span className="interest-tag">Product Strategy</span>
+                            <span className="interest-tag">E-commerce</span>
+                            <span className="interest-tag">Business Development</span>
+                        </div>
+                    </div>
+
+                    <p className="about-quote">
+                        "I'm still learning, experimenting, and building — but I believe the best way to learn technology is to actually use it to build something useful."
+                    </p>
+                </div>
+
+                <div className="about-portrait-column">
+                    <div className="founder-card">
+                        <div className="founder-img-wrapper">
+                            <img src={profileImg} alt="M. Anish John - Founder &amp; Product Builder" className="founder-portrait" />
+                            <div className="founder-img-overlay"></div>
+                        </div>
+                        <div className="founder-card-footer">
+                            <h3 className="founder-name">M. ANISH JOHN</h3>
+                            <span className="founder-title">ENTREPRENEUR &amp; PRODUCT BUILDER</span>
+                            <div className="founder-ventures-pill">
+                                <span>Co-Founder @ AGL &amp; Delintra</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };
