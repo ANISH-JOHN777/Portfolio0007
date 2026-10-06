@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Send, Linkedin, Github, Code2, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Send, Linkedin, Github, Code2, AlertCircle, CheckCircle2, ArrowRight, Copy, Check } from 'lucide-react';
 import './Contact.css';
 
 const Contact = ({ id }) => {
@@ -12,6 +12,7 @@ const Contact = ({ id }) => {
 
     const [status, setStatus] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
+    const [copiedItem, setCopiedItem] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,6 +20,12 @@ const Contact = ({ id }) => {
             ...prev,
             [name]: value
         }));
+    };
+
+    const handleCopy = (text, type) => {
+        navigator.clipboard.writeText(text);
+        setCopiedItem(type);
+        setTimeout(() => setCopiedItem(null), 2000);
     };
 
     const handleSubmit = async (e) => {
@@ -85,32 +92,49 @@ const Contact = ({ id }) => {
                     </div>
 
                     <div className="direct-contact-methods">
-                        <a href="mailto:anishjohn0007@gmail.com" className="contact-method-card">
-                            <Mail size={20} className="method-icon" />
+                        <div className="contact-method-card">
+                            <Mail size={22} className="method-icon" />
                             <div className="method-text">
                                 <span className="method-label">Direct Email</span>
                                 <span className="method-val">anishjohn0007@gmail.com</span>
                             </div>
-                        </a>
+                            <button 
+                                className="copy-btn" 
+                                onClick={() => handleCopy('anishjohn0007@gmail.com', 'email')}
+                                title="Copy Email to Clipboard"
+                            >
+                                {copiedItem === 'email' ? <Check size={16} className="copied-check" /> : <Copy size={16} />}
+                            </button>
+                        </div>
 
-                        <a href="tel:+918072937674" className="contact-method-card">
-                            <Phone size={20} className="method-icon" />
+                        <div className="contact-method-card">
+                            <Phone size={22} className="method-icon" />
                             <div className="method-text">
                                 <span className="method-label">Phone &amp; WhatsApp</span>
                                 <span className="method-val">+91 8072937674</span>
                             </div>
-                        </a>
+                            <button 
+                                className="copy-btn" 
+                                onClick={() => handleCopy('+918072937674', 'phone')}
+                                title="Copy Phone to Clipboard"
+                            >
+                                {copiedItem === 'phone' ? <Check size={16} className="copied-check" /> : <Copy size={16} />}
+                            </button>
+                        </div>
                     </div>
 
                     <div className="contact-social-links">
                         <a href="https://www.linkedin.com/in/m-anish-raj/" target="_blank" rel="noopener noreferrer" className="social-box" title="LinkedIn Profile">
                             <Linkedin size={18} />
+                            <span>LinkedIn</span>
                         </a>
                         <a href="https://github.com/ANISH-JOHN777/" target="_blank" rel="noopener noreferrer" className="social-box" title="GitHub Profile">
                             <Github size={18} />
+                            <span>GitHub</span>
                         </a>
                         <a href="https://leetcode.com/u/anishjohnm/" target="_blank" rel="noopener noreferrer" className="social-box" title="LeetCode Profile">
                             <Code2 size={18} />
+                            <span>LeetCode</span>
                         </a>
                     </div>
                 </div>

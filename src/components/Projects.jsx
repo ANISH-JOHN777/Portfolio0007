@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Rocket, X, Github, ExternalLink, ChevronDown, ChevronUp, Sparkles, Layers } from 'lucide-react';
+import { Rocket, X, Github, ExternalLink, ChevronDown, ChevronUp, Sparkles, Layers, ArrowUpRight } from 'lucide-react';
 import './Projects.css';
 
 const Projects = ({ id, onModalChange }) => {
@@ -11,6 +11,7 @@ const Projects = ({ id, onModalChange }) => {
             id: 'castreach',
             title: 'CASTREACH',
             category: 'AI • SaaS • Product',
+            badge: 'AI SAAS PLATFORM',
             description: 'An AI-powered podcast networking platform connecting hosts, guests, and organizers through discovery, outreach, booking, messaging and collaboration.',
             fullDescription: 'CastReach solves the fragmented workflow of podcast booking and guest outreach. Designed as an end-to-end SaaS platform, it provides intelligent guest discovery, automated AI-assisted outreach messages, unified booking calendars, real-time messaging, and shared episode preparation toolkits.',
             technologies: ['React', 'Node.js', 'AI / LLM', 'Tailwind CSS', 'REST API'],
@@ -30,6 +31,7 @@ const Projects = ({ id, onModalChange }) => {
             id: 'finaltrip-ai',
             title: 'FINALTRIP AI',
             category: 'AI • Travel • Product',
+            badge: 'AI WORKFLOW PLANNER',
             description: 'An AI-powered trip planning platform designed to create structured travel itineraries with destinations, routes, transportation, stays and trip planning workflows.',
             fullDescription: 'FinalTrip AI turns vague travel ideas into detailed, day-by-day itineraries. Powered by generative AI models and mapping data, the platform generates optimized travel routes, recommends authentic local spots, organizes stays, and compiles complete budget and transportation timelines.',
             technologies: ['React', 'Python', 'Flask', 'OpenAI API', 'Tailwind CSS'],
@@ -47,6 +49,7 @@ const Projects = ({ id, onModalChange }) => {
             id: 'stickynode',
             title: 'STICKYNODE',
             category: 'Electron • Productivity • Desktop',
+            badge: 'DESKTOP PRODUCTIVITY TOOL',
             description: 'A lightweight desktop productivity tool designed around persistent, contextual notes and reminders.',
             fullDescription: 'StickyNode is a minimal desktop note-taking utility built with Electron. Designed for power users and founders, it keeps critical notes, code snippets, and contextual reminders pinned to your desktop workspace with zero latency and low memory footprint.',
             technologies: ['Electron', 'JavaScript', 'Node.js', 'CSS3'],
@@ -64,6 +67,7 @@ const Projects = ({ id, onModalChange }) => {
             id: 'asteroid-impact',
             title: 'ASTEROID IMPACT SIMULATOR',
             category: 'React • Three.js • Flask • Data Visualization',
+            badge: '3D DATA VISUALIZATION',
             description: 'An interactive asteroid impact simulation exploring planetary impact scenarios through data-driven visualization.',
             fullDescription: 'Built with Three.js and Flask backend math engines, this simulator models orbital trajectories, kinetic impact energy, blast radius estimations, and planetary impact scenarios through interactive 3D WebGL visualizations.',
             technologies: ['React', 'Three.js', 'Flask', 'Python', 'WebGL'],
@@ -181,14 +185,13 @@ const Projects = ({ id, onModalChange }) => {
                         <div
                             key={project.id}
                             className="featured-project-card"
-                            onClick={() => openModal(project)}
                         >
                             <div className="card-top-bar">
-                                <span className="project-badge"><Sparkles size={13} /> {project.category}</span>
+                                <span className="project-badge"><Sparkles size={12} /> {project.badge || project.category}</span>
                                 <Rocket size={20} className="card-rocket-icon" />
                             </div>
 
-                            <h3 className="project-name">{project.title}</h3>
+                            <h3 className="project-name" onClick={() => openModal(project)}>{project.title}</h3>
                             <p className="project-desc">{project.description}</p>
 
                             <div className="project-tech-strip">
@@ -198,7 +201,15 @@ const Projects = ({ id, onModalChange }) => {
                             </div>
 
                             <div className="project-card-footer">
-                                <span className="view-details-btn">View Details &rarr;</span>
+                                <button className="view-details-btn" onClick={() => openModal(project)}>
+                                    <span>Product Overview</span>
+                                    <ArrowUpRight size={16} />
+                                </button>
+                                {project.github && (
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-github-icon" title="View Source on GitHub">
+                                        <Github size={18} />
+                                    </a>
+                                )}
                             </div>
                         </div>
                     ))}
